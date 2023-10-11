@@ -1,0 +1,18 @@
+.ion-card-content{
+    --display: flex;
+    --align-items: center;
+    --justify-content: space-between;
+}
+
+.card {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card h2 {
+    margin-top: auto;
+    margin-bottom: auto;
+    font-weight: bold;
+    color: rgb(69, 69, 69)
+}
+

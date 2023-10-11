@@ -25,6 +25,8 @@ import MailDetail from './pages/MailDetail';
 import Meet from './pages/Meet';
 import MailTabs from './pages/MailTabs';
 import Settings from './pages/Settings';
+import SearchPage from './pages/SearchPage';
+import ProfileUser from './pages/ProfileUser';
 
 setupIonicReact();
 
@@ -35,7 +37,7 @@ const App: React.FC = () => (
           <IonHeader>
               <IonToolbar>
                   <IonTitle>
-                      Ionic Mail
+                      NAMA APLIKASI
                   </IonTitle>
               </IonToolbar>
             </IonHeader>
@@ -44,7 +46,7 @@ const App: React.FC = () => (
               <IonMenuToggle>
                 <IonItem button routerLink="/tabs/mail">
                   <IonIcon slot="start" icon={list}/>
-                  <IonLabel>All Mail</IonLabel>
+                  <IonLabel>Catatan Kalori Harian</IonLabel>
                 </IonItem>
                 <IonItem button routerLink="/tabs/spam">
                   <IonIcon slot="start" icon={warning}/>
@@ -62,6 +64,7 @@ const App: React.FC = () => (
           <Route path="/tabs" component={MailTabs} />
           <Route path="/mail/:mailId" component={MailDetail} />
           <Route path="/tabs/settings" component={Settings}/>
+          <Route path="/tabs/search" component={SearchPage}/>
           <Redirect exact from="/" to="/tabs" />
         </IonRouterOutlet> 
     </IonReactRouter>

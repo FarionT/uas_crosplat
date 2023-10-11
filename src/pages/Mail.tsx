@@ -1,12 +1,21 @@
-import { IonButton, IonButtons, IonCard, IonCardContent, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar } from "@ionic/react";
+import { IonButton, IonButtons, IonCard, IonCardContent, IonContent, IonHeader, IonIcon, IonMenuButton, IonPage, IonSearchbar, IonTitle, IonToolbar } from "@ionic/react";
+import { addCircleOutline, addOutline, colorFill, searchOutline } from "ionicons/icons";
+import { MouseEventHandler } from "react";
+import "./Calorie.css";
 
 export const MAIL_DATA = [
-    {id: 'm1', subject: 'Magang MBKM sudah dimulai'},
-    {id: "m2", subject: 'Bimbingan Skripsi'},
-    {id: 'm3', subject: 'Progress Laporan'}
+    {id: 'sp', subject: 'Sarapan'},
+    {id: "ms", subject: 'Makan Siang'},
+    {id: 'mm', subject: 'Makan Malam'},
+    {id: 'sc', subject: 'Camilan / Snack'}
 ]
 
 const Mail: React.FC = () => {
+    const handleSearchIcon = () => {
+        console.log("Searching...");
+    };
+    
+
     return(
         <IonPage>
             <IonHeader>
@@ -14,18 +23,21 @@ const Mail: React.FC = () => {
                     <IonButtons slot="start">
                         <IonMenuButton />
                     </IonButtons>
+                    <IonButton slot="end" onClick={handleSearchIcon} color="dark" href="/tabs/search">
+                        <IonIcon icon={searchOutline} /> 
+                    </IonButton>
                     <IonTitle>
-                        Ionic Mail
+                        Tanggal/Hari/Kalender
                     </IonTitle>
                 </IonToolbar>
             </IonHeader>
             <IonContent className="ion-padding">
                 {MAIL_DATA.map(mail=>(
                     <IonCard key={mail.id}>
-                        <IonCardContent className="ion-text-center">
+                        <IonCardContent className="card">
                             <h2>{mail.subject}</h2>
-                            <IonButton routerLink={`/mail/${mail.id}`}>
-                                View Mail
+                            <IonButton color="dark" href="/tabs/search">
+                                <IonIcon icon={addOutline} />
                             </IonButton>
                         </IonCardContent>
                     </IonCard>
