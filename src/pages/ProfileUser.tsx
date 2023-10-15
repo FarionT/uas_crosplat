@@ -35,7 +35,7 @@ const ProfileUser: React.FC = () => {
                             <IonCardContent>
                                 <IonCardSubtitle>Update berat badan awal dan tujuan berat badan</IonCardSubtitle>
                             </IonCardContent>
-                            <IonIcon slot="end" icon={chevronForward} />
+                            <IonIcon icon={chevronForward} style={{ float: 'right' }} />
                         </IonCard>
                         <IonCard>
                             <IonCardHeader>
@@ -44,7 +44,7 @@ const ProfileUser: React.FC = () => {
                             <IonCardContent>
                                 <IonCardSubtitle>Berisikan kumpulan foto baik foto diri maupun makanan harian</IonCardSubtitle>
                             </IonCardContent>
-                            <IonIcon slot="end" icon={chevronForward} />
+                            <IonIcon icon={chevronForward} style={{ float: 'right' }} />
                         </IonCard>
                         <IonCard>
                             <IonCardHeader>
@@ -53,7 +53,7 @@ const ProfileUser: React.FC = () => {
                             <IonCardContent>
                                 <IonCardSubtitle>Tempat untuk mengatur pengingat atau Notif untuk user</IonCardSubtitle>
                             </IonCardContent>
-                            <IonIcon slot="end" icon={chevronForward} />
+                            <IonIcon icon={chevronForward} style={{ float: 'right' }} />
                         </IonCard>
                     </IonCol>
                 </IonRow>
@@ -67,7 +67,7 @@ const ProfileUser: React.FC = () => {
                             <IonCardContent>
                                 <IonCardSubtitle>Mengubah Email, username, dan hapus akun</IonCardSubtitle>
                             </IonCardContent>
-                            <IonIcon slot="end" icon={chevronForward} />
+                            <IonIcon icon={chevronForward} style={{ float: 'right' }} />
                         </IonCard>
                     </IonCol>
                 </IonRow>
@@ -81,7 +81,7 @@ const ProfileUser: React.FC = () => {
                             <IonCardContent>
                                 <IonCardSubtitle>Pilih Lokasi User</IonCardSubtitle>
                             </IonCardContent>
-                            <IonIcon slot="end" icon={chevronForward} />
+                            <IonIcon icon={chevronForward} style={{ float: 'right' }} />
                         </IonCard>
                         <IonCard>
                             <IonCardHeader>
@@ -90,7 +90,7 @@ const ProfileUser: React.FC = () => {
                             <IonCardContent>
                                 <IonCardSubtitle>Pilih tema aplikasi</IonCardSubtitle>
                             </IonCardContent>
-                            <IonIcon slot="end" icon={chevronForward} />
+                            <IonIcon icon={chevronForward} style={{ float: 'right'}} />
                         </IonCard>
                     </IonCol>
                 </IonRow>
