@@ -66,12 +66,6 @@ const App: React.FC = () => (
           <Route path="/mail/:mailId" component={MailDetail} />
           <Route path="/tabs/settings" component={Settings}/>
           <Route path="/tabs/search" component={SearchPage}/>
-<<<<<<< Updated upstream
-          <Route path="/tabs/profile" component={MailTabs}/>
-=======
-          <Route path="/tabs/profile" component={ProfileUser}/>
-          <Route path="/tabs/laporan" component={Kalori} />
->>>>>>> Stashed changes
           <Redirect exact from="/" to="/tabs" />
         </IonRouterOutlet> 
     </IonReactRouter>
