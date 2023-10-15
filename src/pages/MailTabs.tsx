@@ -4,6 +4,7 @@ import { Redirect, Route } from "react-router"
 import Mail from "./Mail"
 import Meet from "./Meet"
 import Spam from "./Spam"
+import Kalori from "./Kalori"
 import Profile from "./ProfileUser";
 
 const MailTabs: React.FC = () =>{
@@ -15,13 +16,14 @@ const MailTabs: React.FC = () =>{
                 <Route exact path="/tabs/meet" component={Meet}/>
                 <Route exact path="/tabs/spam" component={Spam}/>
                 <Route exact path="/tabs/profile" component={Profile} />
+                <Route exact path="/tabs/laporan" component={Kalori} />
             </IonRouterOutlet>
             <IonTabBar slot="bottom" className="ion-content-center">
                 <IonTabButton tab="mail" href='/tabs/mail'>
                     <IonIcon icon={restaurant} />
                     <IonLabel>Catatan Harian</IonLabel>  
                 </IonTabButton>   
-                <IonTabButton tab="meet" href='/tabs/meet'>
+                <IonTabButton tab="laporan" href='/tabs/laporan'>
                     <IonIcon icon={barChart} />
                     <IonLabel>Laporan</IonLabel>  
                 </IonTabButton>

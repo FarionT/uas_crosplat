@@ -27,6 +27,7 @@ import MailTabs from './pages/MailTabs';
 import Settings from './pages/Settings';
 import SearchPage from './pages/SearchPage';
 import ProfileUser from './pages/ProfileUser';
+import Kalori from './pages/Kalori';
 
 setupIonicReact();
 
@@ -65,7 +66,12 @@ const App: React.FC = () => (
           <Route path="/mail/:mailId" component={MailDetail} />
           <Route path="/tabs/settings" component={Settings}/>
           <Route path="/tabs/search" component={SearchPage}/>
+<<<<<<< Updated upstream
           <Route path="/tabs/profile" component={MailTabs}/>
+=======
+          <Route path="/tabs/profile" component={ProfileUser}/>
+          <Route path="/tabs/laporan" component={Kalori} />
+>>>>>>> Stashed changes
           <Redirect exact from="/" to="/tabs" />
         </IonRouterOutlet> 
     </IonReactRouter>
