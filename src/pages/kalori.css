@@ -1,0 +1,36 @@
+.horizontal-line {
+    height: 1px;
+    background-color: #000;
+    margin: 10px 0; 
+  }
+
+/* YourComponent.css */
+.custom-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+  
+.left-content {
+    flex: 1;
+    text-align: left;
+    padding-right: 20vw;
+}
+
+.right-content {
+    flex: 1;
+    text-align: right;
+    padding-left: 20vw;
+}
+
+.right-content2 {
+    flex: 1;
+    text-align: right;
+}
+
+.kalori-kanan {
+    text-align: right;
+    padding-right: 2vw;
+    padding-top: 2vw;
+}
