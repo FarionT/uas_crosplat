@@ -65,6 +65,7 @@ const App: React.FC = () => (
           <Route path="/mail/:mailId" component={MailDetail} />
           <Route path="/tabs/settings" component={Settings}/>
           <Route path="/tabs/search" component={SearchPage}/>
+          <Route path="/tabs/profile" component={ProfileUser}/>
           <Redirect exact from="/" to="/tabs" />
         </IonRouterOutlet> 
     </IonReactRouter>

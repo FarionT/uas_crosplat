@@ -4,10 +4,10 @@ import { MouseEventHandler } from "react";
 import "./Calorie.css";
 
 export const MAIL_DATA = [
-    {id: 'sp', subject: 'Sarapan'},
-    {id: "ms", subject: 'Makan Siang'},
-    {id: 'mm', subject: 'Makan Malam'},
-    {id: 'sc', subject: 'Camilan / Snack'}
+    {id: 'sp', subject: 'Sarapan', calori:'0'},
+    {id: "ms", subject: 'Makan Siang', calori:'0'},
+    {id: 'mm', subject: 'Makan Malam', calori:'0'},
+    {id: 'sc', subject: 'Camilan / Snack', calori:'0'}
 ]
 
 const Mail: React.FC = () => {
