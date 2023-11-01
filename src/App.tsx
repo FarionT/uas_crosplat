@@ -30,9 +30,8 @@ const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
         <IonRouterOutlet id="main">
-          <Route path="/tabs" component={BottomTabs} />
-          <Route path="/tabs/search" component={SearchPage}/>
-          <Redirect exact from="/" to="/tabs" />
+          <Route path="/" component={BottomTabs} />
+          <Route path="/search" component={SearchPage}/>
         </IonRouterOutlet> 
     </IonReactRouter>
   </IonApp>
