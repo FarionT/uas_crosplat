@@ -22,7 +22,7 @@ const CatatanHarian: React.FC = () => {
                     <IonButtons slot="start">
                         <IonMenuButton />
                     </IonButtons>
-                    <IonButton slot="end" onClick={handleSearchIcon} color="dark" href="/tabs/search">
+                    <IonButton slot="end" onClick={handleSearchIcon} color="dark" href="/search">
                         <IonIcon icon={searchOutline} /> 
                     </IonButton>
                     <IonTitle>
@@ -35,7 +35,7 @@ const CatatanHarian: React.FC = () => {
                     <IonCard key={mail.id}>
                         <IonCardContent className="card">
                             <h2>{mail.subject}</h2>
-                            <IonButton color="dark" href="/tabs/search">
+                            <IonButton color="dark" href="/search">
                                 <IonIcon icon={addOutline} />
                             </IonButton>
                         </IonCardContent>
