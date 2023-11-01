@@ -1,7 +1,7 @@
 import { IonButton, IonButtons, IonCard, IonCardContent, IonContent, IonHeader, IonIcon, IonMenuButton, IonPage, IonSearchbar, IonTitle, IonToolbar } from "@ionic/react";
 import { addCircleOutline, addOutline, colorFill, searchOutline } from "ionicons/icons";
 import { MouseEventHandler } from "react";
-import "./Calorie.css";
+import "./CatatanHarian.css";
 
 export const MAIL_DATA = [
     {id: 'sp', subject: 'Sarapan', calori:'0'},
@@ -10,11 +10,10 @@ export const MAIL_DATA = [
     {id: 'sc', subject: 'Camilan / Snack', calori:'0'}
 ]
 
-const Mail: React.FC = () => {
+const CatatanHarian: React.FC = () => {
     const handleSearchIcon = () => {
         console.log("Searching...");
     };
-    
 
     return(
         <IonPage>
@@ -47,4 +46,4 @@ const Mail: React.FC = () => {
     )
 }
 
-export default Mail;
+export default CatatanHarian;

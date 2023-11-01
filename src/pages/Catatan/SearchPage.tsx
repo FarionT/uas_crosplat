@@ -16,7 +16,7 @@ import {
   IonCardTitle,
 } from '@ionic/react';
 
-import { MAIL_DATA } from './Mail'; // Pastikan Anda mengimpor MAIL_DATA
+import { MAIL_DATA } from './CatatanHarian';
 import { arrowBack } from 'ionicons/icons';
 
 const SearchPage: React.FC = () => {

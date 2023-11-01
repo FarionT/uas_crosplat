@@ -20,51 +20,17 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
-import Mail from './pages/Mail';
-import MailDetail from './pages/MailDetail';
-import Meet from './pages/Meet';
-import MailTabs from './pages/MailTabs';
-import Settings from './pages/Settings';
-import SearchPage from './pages/SearchPage';
-import ProfileUser from './pages/ProfileUser';
-import Kalori from './pages/Kalori';
+import BottomTabs from './pages/Navigasi/BottomTabs';
+import SearchPage from './pages/Catatan/SearchPage';
+
 
 setupIonicReact();
 
 const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
-        <IonMenu contentId="main">
-          <IonHeader>
-              <IonToolbar>
-                  <IonTitle>
-                      NAMA APLIKASI
-                  </IonTitle>
-              </IonToolbar>
-            </IonHeader>
-          <IonContent>
-            <IonList>
-              <IonMenuToggle>
-                <IonItem button routerLink="/tabs/mail">
-                  <IonIcon slot="start" icon={list}/>
-                  <IonLabel>Catatan Kalori Harian</IonLabel>
-                </IonItem>
-                <IonItem button routerLink="/tabs/spam">
-                  <IonIcon slot="start" icon={warning}/>
-                  <IonLabel>Spam</IonLabel>
-                </IonItem>
-                <IonItem button routerLink="/tabs/settings">
-                  <IonIcon slot="start" icon={settings}/>
-                  <IonLabel>Settings</IonLabel>
-                </IonItem>
-              </IonMenuToggle>
-            </IonList>
-          </IonContent>
-        </IonMenu>
         <IonRouterOutlet id="main">
-          <Route path="/tabs" component={MailTabs} />
-          <Route path="/mail/:mailId" component={MailDetail} />
-          <Route path="/tabs/settings" component={Settings}/>
+          <Route path="/tabs" component={BottomTabs} />
           <Route path="/tabs/search" component={SearchPage}/>
           <Redirect exact from="/" to="/tabs" />
         </IonRouterOutlet> 

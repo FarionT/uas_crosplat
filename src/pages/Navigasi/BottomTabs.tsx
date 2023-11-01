@@ -1,20 +1,16 @@
 import { IonIcon, IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs } from "@ionic/react"
 import { barChart, mailOutline, personCircleOutline, restaurant, videocamOutline } from "ionicons/icons"
 import { Redirect, Route } from "react-router"
-import Mail from "./Mail"
-import Meet from "./Meet"
-import Spam from "./Spam"
-import Kalori from "./Kalori"
-import Profile from "./ProfileUser";
+import CatatanHarian from "../Catatan/CatatanHarian"
+import Kalori from "../Laporan/Kalori"
+import Profile from "../Profile/ProfileUser";
 
-const MailTabs: React.FC = () =>{
+const BottomTabs: React.FC = () =>{
     return(
         <IonTabs>
             <IonRouterOutlet>
                 <Redirect exact path="/tabs" to="/tabs/mail" />
-                <Route exact path="/tabs/mail" component={Mail}/>
-                <Route exact path="/tabs/meet" component={Meet}/>
-                <Route exact path="/tabs/spam" component={Spam}/>
+                <Route exact path="/tabs/mail" component={CatatanHarian}/>
                 <Route exact path="/tabs/profile" component={Profile} />
                 <Route exact path="/tabs/laporan" component={Kalori} />
             </IonRouterOutlet>
@@ -36,4 +32,4 @@ const MailTabs: React.FC = () =>{
     )
 }
 
-export default MailTabs;
+export default BottomTabs;

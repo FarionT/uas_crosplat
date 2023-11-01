@@ -2,7 +2,7 @@ import { IonAvatar, IonButton, IonButtons, IonCard, IonCardContent, IonCardHeade
 import { addCircleOutline, addOutline, chevronForward, colorFill, searchOutline } from "ionicons/icons";
 
 
-import spiderman from '../images/spiderman.png';
+import spiderman from '../../images/spiderman.png';
 
 const ProfileUser: React.FC = () => {
     return(
