@@ -70,7 +70,7 @@ const Kalori:React.FC = () =>{
                             </IonItem>
                             <IonItem className="custom-item">
                                 <div className="left-content">
-                                    <IonLabel>Camilan/Lainnya</IonLabel>
+                                    <IonLabel>Camilan</IonLabel>
                                 </div>
                                 <div className="right-content">
                                     <IonLabel>(0%)</IonLabel>
