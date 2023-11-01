@@ -10,6 +10,10 @@ import {
   IonSelectOption,
   IonButtons,
   IonBackButton,
+  IonCard,
+  IonCardContent,
+  IonCardSubtitle,
+  IonCardTitle,
 } from '@ionic/react';
 
 import { MAIL_DATA } from './Mail'; // Pastikan Anda mengimpor MAIL_DATA
@@ -32,7 +36,8 @@ const SearchPage: React.FC = () => {
                 </IonButtons>
                 <IonTitle>NAMA APP</IonTitle>
                 <IonSelect
-                placeholder= "mail.id"
+                slot='end'
+                placeholder= "Options"
                 value={selectedMail}
                 onIonChange={handleSelectChange}
                 >
@@ -52,7 +57,24 @@ const SearchPage: React.FC = () => {
                     onIonChange={(e) => setSearchTerm(e.detail.value!)}
                 />
             </IonToolbar>
-            <h1>HEHHEHEHEHE</h1>
+            <IonCard>
+              <IonCardContent>
+                <IonCardTitle>Ayam Goreng</IonCardTitle>
+                <IonCardSubtitle>500 kalori / 100g</IonCardSubtitle>
+              </IonCardContent>
+            </IonCard>
+            <IonCard>
+              <IonCardContent>
+                <IonCardTitle>Kentang Goreng</IonCardTitle>
+                <IonCardSubtitle>800 kalori / 100g</IonCardSubtitle>
+              </IonCardContent>
+            </IonCard>
+            <IonCard>
+              <IonCardContent>
+                <IonCardTitle>Nasi Goreng</IonCardTitle>
+                <IonCardSubtitle>700 kalori / 100g</IonCardSubtitle>
+              </IonCardContent>
+            </IonCard>
       </IonContent>
     </IonPage>
   );
