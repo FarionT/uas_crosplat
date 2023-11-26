@@ -22,6 +22,11 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 import BottomTabs from './pages/Navigasi/BottomTabs';
 import SearchPage from './pages/Catatan/SearchPage';
+import Login from './pages/Login/Login';
+import Register from './pages/Register/Register';
+import RegisterData from './pages/Register/RegisterData';
+import ProfileUser from './pages/Profile/ProfileUser';
+import Kalori from './pages/Laporan/Kalori';
 
 
 setupIonicReact();
@@ -30,8 +35,13 @@ const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
         <IonRouterOutlet id="main">
-          <Route path="/" component={BottomTabs} />
-          <Route path="/search" component={SearchPage}/>
+          <Route exact path="/" component={Login} />
+          <Route exact path="/register" component={Register} />
+          <Route  path="/register-data" component={RegisterData} />
+          <Route exact path="/home" component={BottomTabs} />
+          <Route exact path="/search" component={SearchPage}/>
+          {/* <Route exact path="/profile" component={ProfileUser} />
+          <Route exact path="/laporan" component={Kalori} /> */}
         </IonRouterOutlet> 
     </IonReactRouter>
   </IonApp>
