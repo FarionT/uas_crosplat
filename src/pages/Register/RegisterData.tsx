@@ -37,7 +37,7 @@ const RegisterData:React.FC = () => {
                   gender: enteredGender
                 });
                 // console.log("Document written with ID: ", docRef.id);
-                history.push("/catatan", docRef.id)
+                history.push("/home")
                 }catch(e){
                   console.log("error adding document", e);
             }
