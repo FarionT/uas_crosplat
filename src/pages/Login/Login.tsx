@@ -52,13 +52,13 @@ const Login:React.FC = () => {
                       duration={1000}
                       onDidDismiss={() => setToastMessage('')}
                     />
-            <IonContent>
+            <IonContent color="light">
                 <IonImg className="logoLogin" src={logo} alt="Healthu" />
-                <IonItem>
+                <IonItem color="light">
                     <IonLabel position="floating">Email</IonLabel>
                     <IonInput type="email" ref={emailRef}/>
                 </IonItem>
-                <IonItem>
+                <IonItem color="light">
                     <IonLabel position="floating">Password</IonLabel>
                     <IonInput type="password" ref={passRef}/>
                 </IonItem>

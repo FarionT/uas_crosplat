@@ -79,13 +79,27 @@ const ProfileUser: React.FC = () => {
                 </div>
                 <IonRow>
                     <IonCol>
-                        <h2>Setting Umum</h2>
-                        <IonCard className="updateCard">
+                        {/* <h2>Akun</h2> */}
+                        <IonCard className="manageCard" routerLink="/kelolaAkun">
                             <IonCardHeader>
-                                <IonCardTitle>Berat Saya</IonCardTitle>
+                                <IonCardTitle>Pengelolaan Akun</IonCardTitle>
                             </IonCardHeader>
                             <IonCardContent>
-                                <IonCardSubtitle>Update berat badan awal dan tujuan berat badan</IonCardSubtitle>
+                                <IonCardSubtitle>Mengubah username dan Menghapus Akun</IonCardSubtitle>
+                            </IonCardContent>
+                            <IonIcon icon={chevronForward} style={{ float: 'right' }} />
+                        </IonCard>
+                    </IonCol>
+                </IonRow>
+                <IonRow>
+                    <IonCol>
+                        {/* <h2>Setting Umum</h2> */}
+                        <IonCard className="updateCard">
+                            <IonCardHeader>
+                                <IonCardTitle>Angka Kecukupan Gizi (AKG)</IonCardTitle>
+                            </IonCardHeader>
+                            <IonCardContent>
+                                <IonCardSubtitle>Update berat badan, tinggi badan, dan tingkat aktivitas</IonCardSubtitle>
                             </IonCardContent>
                             <IonIcon icon={chevronForward} style={{ float: 'right' }} />
                         </IonCard>
@@ -100,7 +114,7 @@ const ProfileUser: React.FC = () => {
                         </IonCard>
                     </IonCol>
                 </IonRow>
-                <IonRow>
+                {/* <IonRow>
                     <IonCol>
                         <h2>Akun</h2>
                         <IonCard className="manageCard">
@@ -113,7 +127,7 @@ const ProfileUser: React.FC = () => {
                             <IonIcon icon={chevronForward} style={{ float: 'right' }} />
                         </IonCard>
                     </IonCol>
-                </IonRow>
+                </IonRow> */}
                 <IonButton color="danger" onClick={handleLogout} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '15px' }}>
                     LOGOUT
                 </IonButton>
