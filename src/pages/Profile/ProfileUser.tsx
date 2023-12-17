@@ -1,6 +1,6 @@
 import { IonAvatar, IonButton, IonButtons, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCol, IonContent, IonHeader, IonIcon, IonImg, IonMenuButton, IonPage, IonRow, IonSearchbar, IonTitle, IonToolbar, withIonLifeCycle } from "@ionic/react";
 import { addCircleOutline, addOutline, chevronForward, colorFill, searchOutline } from "ionicons/icons";
-import spiderman from '../../images/spiderman.png';
+import man from '../../images/man.png';
 import { useEffect, useState } from "react";
 import { collection, getDocs, getFirestore } from "firebase/firestore";
 import '../../firebaseConfig';
@@ -55,7 +55,7 @@ const ProfileUser: React.FC = () => {
             <IonContent className="ion-padding">
                 <div className="ion-text-center ion-margin-bottom" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
                     <IonAvatar>
-                        <IonImg src={spiderman} alt="Avatar" />
+                        <IonImg src={man} alt="Avatar" />
                     </IonAvatar>
                     {/* <h2>{userNow.nama}</h2>
                     <p>{userNow.email}</p> */}
@@ -85,15 +85,6 @@ const ProfileUser: React.FC = () => {
                             </IonCardHeader>
                             <IonCardContent>
                                 <IonCardSubtitle>Berisikan kumpulan foto baik foto diri maupun makanan harian</IonCardSubtitle>
-                            </IonCardContent>
-                            <IonIcon icon={chevronForward} style={{ float: 'right' }} />
-                        </IonCard>
-                        <IonCard>
-                            <IonCardHeader>
-                                <IonCardTitle>Pengingat</IonCardTitle>
-                            </IonCardHeader>
-                            <IonCardContent>
-                                <IonCardSubtitle>Tempat untuk mengatur pengingat atau Notif untuk user</IonCardSubtitle>
                             </IonCardContent>
                             <IonIcon icon={chevronForward} style={{ float: 'right' }} />
                         </IonCard>

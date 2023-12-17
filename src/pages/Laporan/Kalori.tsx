@@ -1,13 +1,78 @@
 import { IonTabs, IonButton, IonButtons, IonContent, IonHeader, IonIcon, IonImg, IonItem, IonItemOption, IonItemOptions, IonItemSliding, IonLabel, IonList, IonMenuButton, IonPage, IonTitle, IonToolbar, IonTabBar, IonTabButton, IonCard, IonCardHeader, IonCardContent } from "@ionic/react";
 import { ban, banSharp, create, discOutline, trash } from "ionicons/icons";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { IonReactRouter } from "@ionic/react-router";
 import "./kalori.css";
+import { collection, getDocs, getFirestore } from "firebase/firestore";
+import '../../firebaseConfig';
+import 'react-calendar/dist/Calendar.css';
+import Calendar from 'react-calendar';
 
+type ValuePiece = Date | null;
 
+type Value = ValuePiece | [ValuePiece, ValuePiece];
 
 const Kalori:React.FC = () =>{
+    const db = getFirestore();
+    const [value, onChange] = useState<Value>(new Date());
+    const [food, setFood] = useState<Array<any>>();
+    const [user, setUser] = useState<Array<any>>();
+    const [total, setTotal] = useState(0);
+    var breakfast1 = 0;
+    var lunch1 = 0;
+    var dinner1 = 0;
+    var snack1 = 0;
+    const [breakfast, setBreakfast] = useState(0);
+    const [lunch, setLunch] = useState(0);
+    const [dinner, setDinner] = useState(0);
+    const [snack, setSnack] = useState(0);
+    
+    // var total1 = breakfast + lunch + dinner + snack;
+    var total1 = 0;
+    useEffect(()=>{
+        async function getData(){
+            const querySnapshot = await getDocs(collection(db, "users-food"));
+            const querySnapshot2 = await getDocs(collection(db, "users-data"));
+            console.log('querySnapshot: ', querySnapshot);
+            setFood(querySnapshot.docs.map((doc)=>( {...doc.data(), id:doc.id})));
+            setUser(querySnapshot2.docs.map((doc)=>( {...doc.data(), id:doc.id})));
+            // console.log(food);
+            // const dataBaru = food?.filter(x => x.email == localStorage.getItem("loginEmail"));
+            // setFood(dataBaru);
+        
+            querySnapshot.forEach((doc)=>{
+                console.log(`${doc.id}=> ${doc.data()}`);
+                console.log('doc: ', doc);
+            })
+        // setFood(food?.filter(x => x.email == localStorage.getItem("loginEmail")));
+        }
+    
+        getData();
+          
+    }, []);
+    const userNow = user?.find(x => x.email == localStorage.getItem("loginEmail"));
+    food?.map(makanan => {
+        if(makanan.email == localStorage.getItem("loginEmail") && makanan.tanggal == value?.toString().substring(4, 15)){
+            if(makanan.category == 'bf'){
+                breakfast1 += (makanan.foodCalory * makanan.totalEaten)
+                // console.log("breakfast" + breakfast1);
+                // setBreakfast(prev => prev + (makanan.foodCalory * makanan.totalEaten))
+            }else if(makanan.category == 'lh'){
+                lunch1 += (makanan.foodCalory * makanan.totalEaten)
+                // setLunch(prev => prev + (makanan.foodCalory * makanan.totalEaten))
+            }else if(makanan.category == 'dn'){
+                dinner1 += (makanan.foodCalory * makanan.totalEaten)
+                // setDinner(prev => prev + (makanan.foodCalory * makanan.totalEaten))
+            }else{
+                snack1 += (makanan.foodCalory * makanan.totalEaten)
+                // setSnack(prev => prev + (makanan.foodCalory * makanan.totalEaten))
+            }
+            total1 += (makanan.foodCalory * makanan.totalEaten);
+            // setTotal(makanan.foodCalory * makanan.totalEaten);
+        }
+    })  
+
     return(
         <IonPage>
             <IonHeader>
@@ -22,14 +87,12 @@ const Kalori:React.FC = () =>{
                 </IonToolbar>
             </IonHeader>
             <IonContent className="ion-padding">
+            <Calendar onChange={onChange} value={value} className="kalender" />
                 <IonCard>
                     <IonCardHeader>Kalori</IonCardHeader>
                     <IonCardContent>
-                        <h1>1500</h1>
-                        <div style={{display: 'flex', justifyContent: 'space-between'}}>
-                            <h2>Rata-rata Harian: 1500</h2>
-                            <h2>Target: 2400kkal</h2>
-                        </div>
+                        <h1>{total1}</h1>
+                        <h2>Target: {userNow && userNow!.kalori}kkal</h2>
                         <div className="horizontal-line" />
                         <div className="kalori-kanan">
                             <h2>Kal(kkal)</h2>
@@ -40,10 +103,10 @@ const Kalori:React.FC = () =>{
                                     <IonLabel>Makan Pagi</IonLabel>
                                 </div>
                                 <div className="right-content">
-                                    <IonLabel>(25%)</IonLabel>
+                                    <IonLabel>{(breakfast1 * 100 / total1).toFixed(3)}%</IonLabel>
                                 </div>
                                 <div className="right-content2">
-                                    <IonLabel>372</IonLabel>
+                                    <IonLabel>{breakfast1}</IonLabel>
                                 </div>
                             </IonItem>
                             <IonItem className="custom-item">
@@ -51,10 +114,10 @@ const Kalori:React.FC = () =>{
                                     <IonLabel>Makan Siang</IonLabel>
                                 </div>
                                 <div className="right-content">
-                                    <IonLabel>(37%)</IonLabel>
+                                    <IonLabel>{(lunch1 * 100 / total1).toFixed(3)}%</IonLabel>
                                 </div>
                                 <div className="right-content2">
-                                    <IonLabel>544</IonLabel>
+                                    <IonLabel>{lunch1}</IonLabel>
                                 </div>
                             </IonItem>
                             <IonItem className="custom-item">
@@ -62,10 +125,10 @@ const Kalori:React.FC = () =>{
                                     <IonLabel>Makan Malam</IonLabel>
                                 </div>
                                 <div className="right-content">
-                                    <IonLabel>(37%)</IonLabel>
+                                    <IonLabel>{(dinner1 * 100 / total1).toFixed(3)}%</IonLabel>
                                 </div>
                                 <div className="right-content2">
-                                    <IonLabel>543</IonLabel>
+                                    <IonLabel>{dinner1}</IonLabel>
                                 </div>
                             </IonItem>
                             <IonItem className="custom-item">
@@ -73,10 +136,10 @@ const Kalori:React.FC = () =>{
                                     <IonLabel>Camilan</IonLabel>
                                 </div>
                                 <div className="right-content">
-                                    <IonLabel>(0%)</IonLabel>
+                                    <IonLabel>{(snack1 * 100 /total1).toFixed(3)}%</IonLabel>
                                 </div>
                                 <div className="right-content2">
-                                    <IonLabel>-</IonLabel>
+                                    <IonLabel>{snack1}</IonLabel>
                                 </div>
                             </IonItem>
                         </IonList>
@@ -86,108 +149,40 @@ const Kalori:React.FC = () =>{
                     <IonCardContent>
                         <h1>Makanan Dikonsumsi</h1>
                         <IonList>
-                            <IonItem className="custom-item">
-                                <div className="left-content" style={{fontWeight: 'bold'}}>
-                                    <h2>Makanan</h2>
-                                </div>
-                                <div className="right-content" style={{fontWeight: 'bold'}}>
-                                    <h2>Jumlah Dikonsumsi</h2>
-                                </div>
-                                <div className="right-content2" style={{fontWeight: 'bold'}}>
-                                    <h2>Kal (kkal)</h2>
-                                </div>
-                            </IonItem>
-                            <IonItem className="custom-item">
-                                <div className="left-content">
-                                    <IonLabel>Nasi Putih</IonLabel>
-                                </div>
-                                <div className="right-content">
-                                    <IonLabel>x2 =</IonLabel>
-                                </div>
-                                <div className="right-content2">
-                                    <IonLabel>408</IonLabel>
-                                </div>
-                            </IonItem>
-                            <IonItem className="custom-item">
-                                <div className="left-content">
-                                    <IonLabel>Bubur Ayam</IonLabel>
-                                </div>
-                                <div className="right-content">
-                                    <IonLabel>x1=</IonLabel>
-                                </div>
-                                <div className="right-content2">
-                                    <IonLabel>372</IonLabel>
-                                </div>
-                            </IonItem>
-                            <IonItem className="custom-item">
-                                <div className="left-content">
-                                    <IonLabel>Ayam Goreng</IonLabel>
-                                </div>
-                                <div className="right-content">
-                                    <IonLabel>x1=</IonLabel>
-                                </div>
-                                <div className="right-content2">
-                                    <IonLabel>260</IonLabel>
-                                </div>
-                            </IonItem>
-                            <IonList>
-                            <IonItem className="custom-item">
-                                <div className="left-content">
-                                    <IonLabel>Tempe Orek</IonLabel>
-                                </div>
-                                <div className="right-content">
-                                    <IonLabel>x1=</IonLabel>
-                                </div>
-                                <div className="right-content2">
-                                    <IonLabel>175</IonLabel>
-                                </div>
-                            </IonItem>
-                            <IonItem className="custom-item">
-                                <div className="left-content">
-                                    <IonLabel>Telur Dadar</IonLabel>
-                                </div>
-                                <div className="right-content">
-                                    <IonLabel>x1=</IonLabel>
-                                </div>
-                                <div className="right-content2">
-                                    <IonLabel>93</IonLabel>
-                                </div>
-                            </IonItem>
-                            <IonItem className="custom-item">
-                                <div className="left-content">
-                                    <IonLabel>Sayur Asem</IonLabel>
-                                </div>
-                                <div className="right-content">
-                                    <IonLabel>x1=</IonLabel>
-                                </div>
-                                <div className="right-content2">
-                                    <IonLabel>80</IonLabel>
-                                </div>
-                            </IonItem>
-                            <IonItem className="custom-item">
-                                <div className="left-content">
-                                    <IonLabel>Semur Tahu</IonLabel>
-                                </div>
-                                <div className="right-content">
-                                    <IonLabel>x1=</IonLabel>
-                                </div>
-                                <div className="right-content2">
-                                    <IonLabel>71</IonLabel>
-                                </div>
-                            </IonItem>
-                            <IonItem className="custom-item">
-                                <div className="left-content" style={{fontWeight: 'bold'}}>
-                                    <IonLabel>Total</IonLabel>
-                                </div>
-                                <div className="right-content" style={{fontWeight: 'bold'}}>
-                                    <IonLabel>x8=</IonLabel>
-                                </div>
-                                <div className="right-content2" style={{fontWeight: 'bold'}}>
-                                    <IonLabel>1459</IonLabel>
-                                </div>
-                            </IonItem>
+                        {food?.map(makanan => {
+                            if(makanan.email == localStorage.getItem("loginEmail") && makanan.tanggal == value?.toString().substring(4, 15)){
+                                if(makanan.category == 'bf'){
+                                    breakfast1 += (makanan.foodCalory * makanan.totalEaten)
+                                    // setBreakfast(prev => prev + (makanan.foodCalory * makanan.totalEaten))
+                                }else if(makanan.category == 'lh'){
+                                    lunch1 += (makanan.foodCalory * makanan.totalEaten)
+                                    // setLunch(prev => prev + (makanan.foodCalory * makanan.totalEaten))
+                                }else if(makanan.category == 'dn'){
+                                    dinner1 += (makanan.foodCalory * makanan.totalEaten)
+                                    // setDinner(prev => prev + (makanan.foodCalory * makanan.totalEaten))
+                                }else{
+                                    snack1 += (makanan.foodCalory * makanan.totalEaten)
+                                    // setSnack(prev => prev + (makanan.foodCalory * makanan.totalEaten))
+                                }
+                                // total += (makanan.foodCalory * makanan.totalEaten);
+                                // setTotal(makanan.foodCalory * makanan.totalEaten);
+                                return(
+                                    <IonItem className="custom-item" key={makanan.id}>
+                                        <div className="left-content" style={{fontWeight: 'bold'}}>
+                                            <h2>{makanan.foodName}</h2>
+                                        </div>
+                                        <div className="right-content" style={{fontWeight: 'bold'}}>
+                                            <h2>{makanan.totalEaten} g</h2>
+                                        </div>
+                                        <div className="right-content2" style={{fontWeight: 'bold'}}>
+                                            <h2>{makanan.foodCalory}</h2>
+                                        </div>
+                                    </IonItem>
+                                )
+                            }
+                        })}             
                         </IonList>
-                        </IonList>
+                        {/* {()=> {setTotal(total)}} */}
                     </IonCardContent>
                 </IonCard>
             </IonContent>

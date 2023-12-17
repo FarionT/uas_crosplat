@@ -12,6 +12,7 @@ const RegisterData:React.FC = () => {
     const tbRef = useRef<HTMLIonInputElement>(null);
     const tingkatRef = useRef<HTMLIonRadioGroupElement>(null);
     const genderInputRef = useRef<HTMLIonRadioGroupElement>(null);
+    const usiaRef = useRef<HTMLIonInputElement>(null);
 
     const [toastMessage, setToastMessage] = useState('');
     
@@ -19,6 +20,7 @@ const RegisterData:React.FC = () => {
     const addDataHandler = async() => {
         const enteredBb = bbRef.current?.value;
         const enteredTb = tbRef.current?.value;
+        const enteredUsia = usiaRef.current?.value;
         const enteredTingkat = tingkatRef.current?.value;
         const enteredGender = genderInputRef.current?.value;
         console.log(enteredBb, enteredTb, enteredTingkat, enteredGender);
@@ -28,16 +30,37 @@ const RegisterData:React.FC = () => {
             setToastMessage('Masukkan data dengan lengkap!')
             return;
         }else{
+            var bmr = 0;
+            if(enteredGender == "male"){
+                bmr = (88.4 + (13.4 * Number(enteredBb))) + (4.8 * Number(enteredTb)) - (5.68 * Number(enteredUsia));
+            }else{
+                bmr = (447.6 + (9.25 * Number(enteredBb))) + (3.1 * Number(enteredTb)) - (4.33 * Number(enteredUsia));
+            }
+            var kalori = 0;
+            if(enteredTingkat == 1){
+                kalori = 1.2*bmr;
+            }else if(enteredTingkat == 2){
+                kalori = 1.375 * bmr;
+            }else if(enteredTingkat == 3){
+                kalori = 1.55 * bmr;
+            }else if(enteredTingkat == 4){
+                kalori = 1.725 * bmr;
+            }else{
+                kalori = 1.9 * bmr;
+            }
             try{
                 const docRef = await addDoc(collection(db, "users-data"), {
                   email: localStorage.getItem("loginEmail"),
+                  usia: enteredUsia,
                   bb: enteredBb,
                   tb: enteredTb,
+                  bmr: bmr.toFixed(3),
                   tingkat: enteredTingkat,
-                  gender: enteredGender
+                  gender: enteredGender,
+                  kalori: kalori.toFixed(3)
                 });
                 // console.log("Document written with ID: ", docRef.id);
-                history.push("/home")
+                history.replace("/home")
                 }catch(e){
                   console.log("error adding document", e);
             }
@@ -64,6 +87,10 @@ const RegisterData:React.FC = () => {
                 </IonToolbar>
             </IonHeader>
             <IonContent>
+            <IonItem>
+                    <IonLabel position="floating">Usia</IonLabel>
+                    <IonInput type="number" ref={usiaRef}/>
+                </IonItem>
                 <IonItem>
                     <IonLabel position="floating">Berat Badan (kg)</IonLabel>
                     <IonInput type="number" ref={bbRef}/>

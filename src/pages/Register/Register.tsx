@@ -67,7 +67,7 @@ const Register:React.FC = () => {
                 });
                 console.log("Document written with ID: ", docRef.id);
                 localStorage.setItem("loginEmail", enteredEmail);
-                history.replace('/register-data')
+                history.push('/register-data')
                 }catch(e){
                   console.log("error adding document", e);
             }

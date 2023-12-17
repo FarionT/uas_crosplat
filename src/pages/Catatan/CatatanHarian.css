@@ -4,7 +4,7 @@
     --justify-content: space-between;
 }
 
-.card {
+.content-card-isi {
     display: flex;
     justify-content: space-between;
 }
@@ -14,5 +14,9 @@
     margin-bottom: auto;
     font-weight: bold;
     color: rgb(69, 69, 69)
+}
+
+.kalender{
+    margin: 25px auto;
 }
 
