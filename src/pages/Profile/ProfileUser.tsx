@@ -4,6 +4,8 @@ import man from '../../images/man.png';
 import { useEffect, useState } from "react";
 import { collection, getDocs, getFirestore } from "firebase/firestore";
 import '../../firebaseConfig';
+import logo from "../../images/logo-no-background.png";
+import "./ProfileUser.css";
 
 const ProfileUser: React.FC = () => {
     const db = getFirestore();
@@ -43,16 +45,17 @@ const ProfileUser: React.FC = () => {
     return(
         <IonPage>
             <IonHeader>
-                <IonToolbar>
+                <IonToolbar color="secondary">
                     <IonButtons slot="start">
                         <IonMenuButton />
                     </IonButtons>
+                    <IonImg slot="start" className="logoProfile" src={logo} alt="Healthu" />
                     <IonTitle>
-                        (Logo) + NamaApp
+                        Profile
                     </IonTitle>
                 </IonToolbar>
             </IonHeader>
-            <IonContent className="ion-padding">
+            <IonContent className="ion-padding" color="light">
                 <div className="ion-text-center ion-margin-bottom" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
                     <IonAvatar>
                         <IonImg src={man} alt="Avatar" />
@@ -70,7 +73,7 @@ const ProfileUser: React.FC = () => {
                 <IonRow>
                     <IonCol>
                         <h2>Setting Umum</h2>
-                        <IonCard>
+                        <IonCard className="updateCard">
                             <IonCardHeader>
                                 <IonCardTitle>Berat Saya</IonCardTitle>
                             </IonCardHeader>
@@ -79,7 +82,7 @@ const ProfileUser: React.FC = () => {
                             </IonCardContent>
                             <IonIcon icon={chevronForward} style={{ float: 'right' }} />
                         </IonCard>
-                        <IonCard routerLink="/album">
+                        <IonCard routerLink="/album" className="albumCard">
                             <IonCardHeader>
                                 <IonCardTitle>Album Foto</IonCardTitle>
                             </IonCardHeader>
@@ -93,7 +96,7 @@ const ProfileUser: React.FC = () => {
                 <IonRow>
                     <IonCol>
                         <h2>Akun</h2>
-                        <IonCard>
+                        <IonCard className="manageCard">
                             <IonCardHeader>
                                 <IonCardTitle>Pengelolaan Akun</IonCardTitle>
                             </IonCardHeader>

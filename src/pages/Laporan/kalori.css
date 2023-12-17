@@ -2,7 +2,12 @@
     height: 1px;
     background-color: #000;
     margin: 10px 0; 
-  }
+}
+
+.logoLaporan {
+    padding-left: 10px;
+    width: 85px;
+}
 
 /* YourComponent.css */
 .custom-item {
@@ -31,4 +36,12 @@
     text-align: right;
     padding-right: 2vw;
     padding-top: 2vw;
+}
+
+.kaloriCard {
+    background-color: #f4f5f8;
+}
+
+.consumeCard {
+    background-color: #f4f5f8;
 }

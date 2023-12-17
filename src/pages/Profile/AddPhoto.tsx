@@ -1,5 +1,5 @@
-import { IonAvatar, IonButton, IonButtons, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCol, IonContent, IonHeader, IonIcon, IonImg, IonLabel, IonMenuButton, IonPage, IonRow, IonSearchbar, IonTitle, IonToolbar, withIonLifeCycle } from "@ionic/react";
-import { addCircleOutline, addOutline, camera, chevronForward, colorFill, searchOutline } from "ionicons/icons";
+import { IonAvatar, IonBackButton, IonButton, IonButtons, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCol, IonContent, IonHeader, IonIcon, IonImg, IonLabel, IonMenuButton, IonPage, IonRow, IonSearchbar, IonTitle, IonToolbar, withIonLifeCycle } from "@ionic/react";
+import { addCircleOutline, addOutline, arrowBackOutline, camera, chevronForward, colorFill, searchOutline } from "ionicons/icons";
 import man from '../../images/man.png';
 import { useEffect, useState } from "react";
 import { addDoc, collection, getDocs, getFirestore } from "firebase/firestore";
@@ -7,6 +7,7 @@ import '../../firebaseConfig';
 import {getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage';
 import { Camera, CameraResultType, CameraSource } from "@capacitor/camera";
 import { useHistory } from "react-router";
+import logo from "../../images/logo-no-background.png";
 
 const AddPhoto: React.FC = () => {
     const db = getFirestore();
@@ -70,17 +71,20 @@ const AddPhoto: React.FC = () => {
     return(
         <IonPage>
             <IonHeader>
-                <IonToolbar>
+                <IonToolbar color="secondary">
                     <IonButtons slot="start">
                         {/* <IonBackButton style={{display: 'block'}} text="" icon={arrowBack}></IonBackButton> */}
-                        <IonButton routerLink='/album'>Back</IonButton>
+                        <IonButton routerLink='/album'>
+                            <IonIcon icon={arrowBackOutline} />
+                        </IonButton>
                     </IonButtons>
+                    <IonImg slot="start" src={logo} alt="Healthu" style={{ paddingLeft: '10px', width: '85px' }} />
                     <IonTitle>
-                        (Logo) + NamaApp
+                        Add Photo
                     </IonTitle>
                 </IonToolbar>
             </IonHeader>
-            <IonContent className="ion-padding">
+            <IonContent className="ion-padding" color="light">
                 <IonRow className='ion-text-center'>
                     <IonCol className="ion-align-items-center">
                         <div className="image-preview">

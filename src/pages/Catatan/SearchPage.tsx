@@ -19,16 +19,18 @@ import {
   IonInput,
   IonItem,
   IonLabel,
+  IonImg,
 } from '@ionic/react';
 
 import { MAIL_DATA } from './CatatanHarian';
-import { arrowBack, search } from 'ionicons/icons';
+import { arrowBack, arrowBackOutline, search } from 'ionicons/icons';
 import axios from 'axios';
 import { addDoc, collection, getFirestore } from 'firebase/firestore';
 import { useHistory } from 'react-router';
 import '../../firebaseConfig';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
+import logo from '../../images/logo-no-background.png';
 
 type ValuePiece = Date | null;
 
@@ -84,13 +86,16 @@ const SearchPage: React.FC = () => {
 
   return (
     <IonPage>
-        <IonHeader className='ion-padding'>
-            <IonToolbar>
+        <IonHeader>
+            <IonToolbar color="secondary">
                 <IonButtons slot="start">
                     {/* <IonBackButton style={{display: 'block'}} text="" icon={arrowBack}></IonBackButton> */}
-                    <IonButton routerLink='/home'>Back</IonButton>
+                    <IonButton routerLink='/home'>
+                      <IonIcon icon={arrowBackOutline} />
+                    </IonButton>
                 </IonButtons>
-                <IonTitle>NAMA APP</IonTitle>
+                <IonImg slot="start" src={logo} alt="Healthu" style={{ paddingLeft: '10px', width: '85px' }} />
+                <IonTitle>Search Page</IonTitle>
                 {/* <IonSelect
                 slot='end'
                 placeholder= "Options"
@@ -110,12 +115,13 @@ const SearchPage: React.FC = () => {
                     placeholder="Cari makanan"
                     onIonChange={(e) => setSearchTerm(e.detail.value!)}
                     ref={inputFood}
+                    style={{ marginTop: '20px'}}
                 />
-                <IonButton onClick={searchFood}>
+                <IonButton onClick={searchFood} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '20px' }}>
                   Search
                 </IonButton>
             </IonToolbar>
-            <IonCard>
+            <IonCard style={{ backgroundColor: '#f4f5f8'}}>
                 {food &&  (
                 <IonCardContent>
                   <IonCardTitle>{food.name}</IonCardTitle>
@@ -137,7 +143,7 @@ const SearchPage: React.FC = () => {
                   </IonItem>
                   <Calendar onChange={onChange} value={value} className="kalender" />
                   <IonButton slot='end' onClick={addFoodToDatabase}>
-                    +
+                    Add
                   </IonButton>
                 </IonCardContent>
                 )}

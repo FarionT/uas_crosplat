@@ -8,6 +8,7 @@ import { collection, getDocs, getFirestore } from "firebase/firestore";
 import '../../firebaseConfig';
 import 'react-calendar/dist/Calendar.css';
 import Calendar from 'react-calendar';
+import logo from "../../images/logo-no-background.png";
 
 type ValuePiece = Date | null;
 
@@ -76,16 +77,17 @@ const Kalori:React.FC = () =>{
     return(
         <IonPage>
             <IonHeader>
-                <IonToolbar>
+                <IonToolbar color="secondary">
                     <IonButtons slot="start">
                         <IonMenuButton />
                     </IonButtons>
+                    <IonImg slot="start" className="logoLaporan" src={logo} alt="Healthu" />
                     <IonTitle>Laporan</IonTitle>
                 </IonToolbar>
             </IonHeader>
-            <IonContent className="ion-padding">
+            <IonContent className="ion-padding" color="light">
             <Calendar onChange={onChange} value={value} className="kalender" />
-                <IonCard>
+                <IonCard className="kaloriCard">
                     <IonCardHeader>Kalori</IonCardHeader>
                     <IonCardContent>
                         <h1>{total1}</h1>
@@ -142,7 +144,7 @@ const Kalori:React.FC = () =>{
                         </IonList>
                     </IonCardContent>
                 </IonCard>
-                <IonCard>
+                <IonCard className="consumeCard">
                     <IonCardContent>
                         <h1>Makanan Dikonsumsi</h1>
                         <IonList>
