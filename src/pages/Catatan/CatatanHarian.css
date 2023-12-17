@@ -4,9 +4,14 @@
     --justify-content: space-between;
 }
 
+/* .logo-catatan{
+    width: 200px;
+} */
+
 .content-card-isi {
     display: flex;
     justify-content: space-between;
+    margin-top: 8px;
 }
 
 .card h2 {
@@ -20,3 +25,6 @@
     margin: 25px auto;
 }
 
+.button-search{
+    padding-right: 15px;
+}

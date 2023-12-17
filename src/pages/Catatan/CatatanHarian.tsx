@@ -1,4 +1,4 @@
-import { IonButton, IonButtons, IonCard, IonCardContent, IonContent, IonHeader, IonIcon, IonMenuButton, IonPage, IonSearchbar, IonTitle, IonToolbar } from "@ionic/react";
+import { IonButton, IonButtons, IonCard, IonCardContent, IonContent, IonHeader, IonIcon, IonImg, IonMenuButton, IonPage, IonSearchbar, IonTitle, IonToolbar } from "@ionic/react";
 import { addCircleOutline, addOutline, colorFill, searchOutline } from "ionicons/icons";
 import { MouseEventHandler, useEffect, useState } from "react";
 import "./CatatanHarian.css";
@@ -7,6 +7,7 @@ import 'react-calendar/dist/Calendar.css';
 import '../../firebaseConfig';
 import { render } from "react-dom";
 import Calendar from 'react-calendar';
+
 
 type ValuePiece = Date | null;
 
@@ -52,12 +53,12 @@ const CatatanHarian: React.FC = () => {
     return(
         <IonPage>
             <IonHeader>
-                <IonToolbar>
+                <IonToolbar color="secondary">
                     <IonButtons slot="start">
                         <IonMenuButton />
                     </IonButtons>
-                    <IonButton slot="end" onClick={handleSearchIcon} color="dark" href="/search">
-                        <IonIcon icon={addOutline} /> 
+                    <IonButton className="button-search" slot="end" onClick={handleSearchIcon} color="primary" href="/search">
+                        <IonIcon icon={searchOutline} /> 
                     </IonButton>
                     <IonTitle>
                         Tanggal/Hari/Kalender
