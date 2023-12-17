@@ -27,6 +27,7 @@ import Register from './pages/Register/Register';
 import RegisterData from './pages/Register/RegisterData';
 import ProfileUser from './pages/Profile/ProfileUser';
 import Kalori from './pages/Laporan/Kalori';
+import AddPhoto from './pages/Profile/AddPhoto';
 
 
 setupIonicReact();
@@ -40,6 +41,7 @@ const App: React.FC = () => (
           <Route  path="/register-data" component={RegisterData} />
           <Route exact path="/home" component={BottomTabs} />
           <Route exact path="/search" component={SearchPage}/>
+          {/* <Route exact path="/add-photo" component={AddPhoto} /> */}
           {/* <Route exact path="/profile" component={ProfileUser} />
           <Route exact path="/laporan" component={Kalori} /> */}
         </IonRouterOutlet> 

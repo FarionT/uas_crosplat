@@ -5,6 +5,9 @@ import CatatanHarian from "../Catatan/CatatanHarian"
 import Kalori from "../Laporan/Kalori"
 import Profile from "../Profile/ProfileUser";
 import { IonReactRouter } from "@ionic/react-router"
+import Album from "../Profile/Album"
+import AddPhoto from "../Profile/AddPhoto"
+
 
 const BottomTabs: React.FC = () =>{
     return(
@@ -15,6 +18,8 @@ const BottomTabs: React.FC = () =>{
                 <Route exact path="/catatan" component={CatatanHarian}/>
                 <Route exact path="/profile" component={() => <Profile />} />
                 <Route exact path="/laporan" component={Kalori} />
+                <Route exact path="/album" component={Album} />
+                <Route exact path="/add-photo" component={AddPhoto} />
             </IonRouterOutlet>
             <IonTabBar slot="bottom" className="ion-content-center">
                 <IonTabButton tab="catatan" href='/catatan'>

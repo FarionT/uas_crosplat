@@ -79,7 +79,7 @@ const ProfileUser: React.FC = () => {
                             </IonCardContent>
                             <IonIcon icon={chevronForward} style={{ float: 'right' }} />
                         </IonCard>
-                        <IonCard>
+                        <IonCard routerLink="/album">
                             <IonCardHeader>
                                 <IonCardTitle>Album Foto</IonCardTitle>
                             </IonCardHeader>

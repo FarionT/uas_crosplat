@@ -91,7 +91,7 @@ const SearchPage: React.FC = () => {
                     <IonButton routerLink='/home'>Back</IonButton>
                 </IonButtons>
                 <IonTitle>NAMA APP</IonTitle>
-                <IonSelect
+                {/* <IonSelect
                 slot='end'
                 placeholder= "Options"
                 value={selectedCategory}
@@ -100,7 +100,7 @@ const SearchPage: React.FC = () => {
                     <IonSelectOption value='lh'>Lunch</IonSelectOption>
                     <IonSelectOption value='dn'>Dinner</IonSelectOption>
                     <IonSelectOption value='sc'>Snack</IonSelectOption>
-                </IonSelect>
+                </IonSelect> */}
             </IonToolbar>
         </IonHeader>
         <IonContent className='ion-padding'>
