@@ -2,6 +2,7 @@ import { IonAvatar, IonButton, IonButtons, IonCard, IonCardContent, IonCardHeade
 import { addCircleOutline, addOutline, chevronForward, colorFill, searchOutline } from "ionicons/icons";
 import man from '../../images/man.png';
 import { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { collection, getDocs, getFirestore } from "firebase/firestore";
 import '../../firebaseConfig';
 import logo from "../../images/logo-no-background.png";
@@ -9,6 +10,7 @@ import "./ProfileUser.css";
 
 const ProfileUser: React.FC = () => {
     const db = getFirestore();
+    const history = useHistory();
     const [user, setUser] = useState<Array<any>>();
     const [userData, setUserData] = useState<Array<any>>();
     const [userNow, setUserNow] = useState();
@@ -34,6 +36,11 @@ const ProfileUser: React.FC = () => {
             setUserNow(currentUser);
         }
     }, [user]);
+
+    const handleLogout = () => {
+        history.push('/');
+        window.location.reload();
+      };
 
     //   console.log(user);
     //   console.log(user?.find(x=>x.email==localStorage.getItem("loginEmail")));
@@ -107,6 +114,9 @@ const ProfileUser: React.FC = () => {
                         </IonCard>
                     </IonCol>
                 </IonRow>
+                <IonButton color="danger" onClick={handleLogout} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '15px' }}>
+                    LOGOUT
+                </IonButton>
             </IonContent>
         </IonPage>
     )
