@@ -80,9 +80,6 @@ const Kalori:React.FC = () =>{
                     <IonButtons slot="start">
                         <IonMenuButton />
                     </IonButtons>
-                    <IonButtons slot="end">
-                        <IonIcon icon={discOutline} size="large" />
-                    </IonButtons>
                     <IonTitle>Laporan</IonTitle>
                 </IonToolbar>
             </IonHeader>

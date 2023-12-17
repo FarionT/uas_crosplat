@@ -85,7 +85,7 @@ const Register:React.FC = () => {
             </IonToast>
             <IonHeader>
                 <IonToolbar>
-                    <IonTitle>Judul App</IonTitle>
+                    <IonTitle>Healthu</IonTitle>
                 </IonToolbar>
             </IonHeader>
             <IonContent>
@@ -101,7 +101,7 @@ const Register:React.FC = () => {
                     <IonLabel position="floating">Password</IonLabel>
                     <IonInput type="password" ref={passRef}/>
                 </IonItem>
-                <IonButton onClick={registerData}>
+                <IonButton onClick={registerData} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '15px'}}>
                     <IonLabel>Register</IonLabel>
                 </IonButton>
                 <p style={{ textAlign:'center' }}>Already have an account? <br/><a href="/">Login here</a></p>

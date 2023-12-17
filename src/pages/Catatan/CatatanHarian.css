@@ -4,9 +4,14 @@
     --justify-content: space-between;
 }
 
-/* .logo-catatan{
-    width: 200px;
+/* .catatan-harian{
+    background-color: blue;
 } */
+
+.logo-catatan{
+    padding-left: 15px;
+    width: 80px;
+}
 
 .content-card-isi {
     display: flex;

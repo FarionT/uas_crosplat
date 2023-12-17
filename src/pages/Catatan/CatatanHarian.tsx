@@ -8,6 +8,8 @@ import '../../firebaseConfig';
 import { render } from "react-dom";
 import Calendar from 'react-calendar';
 
+import logo from '../../images/logo-no-background.png'
+
 
 type ValuePiece = Date | null;
 
@@ -51,12 +53,13 @@ const CatatanHarian: React.FC = () => {
     }, []);
 
     return(
-        <IonPage>
+        <IonPage >
             <IonHeader>
                 <IonToolbar color="secondary">
                     <IonButtons slot="start">
                         <IonMenuButton />
                     </IonButtons>
+                    <IonImg slot="start" className="logo-catatan" src={logo} alt="Healthu" />
                     <IonButton className="button-search" slot="end" onClick={handleSearchIcon} color="primary" href="/search">
                         <IonIcon icon={searchOutline} /> 
                     </IonButton>
@@ -65,7 +68,7 @@ const CatatanHarian: React.FC = () => {
                     </IonTitle>
                 </IonToolbar>
             </IonHeader>
-            <IonContent className="ion-padding">
+            <IonContent className="ion-padding" color="light">
             <Calendar onChange={onChange} value={value} className="kalender" />
                 <IonCard className="breakfast-category">
                     <IonCardContent className="card">

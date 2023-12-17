@@ -52,7 +52,7 @@ const Login:React.FC = () => {
                     />
             <IonHeader>
                 <IonToolbar>
-                    <IonTitle>Judul App</IonTitle>
+                    <IonTitle>Healthu</IonTitle>
                 </IonToolbar>
             </IonHeader>
             <IonContent>
@@ -64,7 +64,7 @@ const Login:React.FC = () => {
                     <IonLabel position="floating">Password</IonLabel>
                     <IonInput type="password" ref={passRef}/>
                 </IonItem>
-                <IonButton onClick={loginHandler}>
+                <IonButton onClick={loginHandler} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '15px' }}>
                     Login
                 </IonButton>
                 <p style={{ textAlign:'center' }}>Doesn't have an account yet? <br/><a href="/register">Register here</a></p>
