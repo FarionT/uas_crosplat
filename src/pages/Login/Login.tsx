@@ -1,9 +1,11 @@
-import { IonButton, IonContent, IonHeader, IonInput, IonItem, IonLabel, IonPage, IonTitle, IonToast, IonToolbar } from "@ionic/react";
+import { IonButton, IonContent, IonHeader, IonImg, IonInput, IonItem, IonLabel, IonPage, IonTitle, IonToast, IonToolbar } from "@ionic/react";
 import '../../firebaseConfig';
 import { useEffect, useState, useRef } from "react";
 import { collection, getDocs, getFirestore } from "firebase/firestore";
 import { Md5 } from "ts-md5";
 import { useHistory } from "react-router-dom";
+import logo from "../../images/logo-no-background.png";
+import "./Login.css";
 // import {createBros}
 
 const Login:React.FC = () => {
@@ -50,12 +52,8 @@ const Login:React.FC = () => {
                       duration={1000}
                       onDidDismiss={() => setToastMessage('')}
                     />
-            <IonHeader>
-                <IonToolbar>
-                    <IonTitle>Healthu</IonTitle>
-                </IonToolbar>
-            </IonHeader>
             <IonContent>
+                <IonImg className="logoLogin" src={logo} alt="Healthu" />
                 <IonItem>
                     <IonLabel position="floating">Email</IonLabel>
                     <IonInput type="email" ref={emailRef}/>
@@ -64,7 +62,7 @@ const Login:React.FC = () => {
                     <IonLabel position="floating">Password</IonLabel>
                     <IonInput type="password" ref={passRef}/>
                 </IonItem>
-                <IonButton onClick={loginHandler} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '15px' }}>
+                <IonButton onClick={loginHandler} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '50px' }}>
                     Login
                 </IonButton>
                 <p style={{ textAlign:'center' }}>Doesn't have an account yet? <br/><a href="/register">Register here</a></p>

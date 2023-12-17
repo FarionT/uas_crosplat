@@ -1,10 +1,12 @@
-import { IonButton, IonContent, IonHeader, IonInput, IonItem, IonLabel, IonPage, IonTitle, IonToast, IonToolbar } from "@ionic/react";
+import { IonButton, IonContent, IonHeader, IonImg, IonInput, IonItem, IonLabel, IonPage, IonTitle, IonToast, IonToolbar } from "@ionic/react";
 import '../../firebaseConfig';
 import { useEffect, useRef, useState } from "react";
 import { addDoc, collection, getDocs, getFirestore } from "firebase/firestore";
 import { Md5 } from "ts-md5";
 import '../../firebaseConfig';
 import { useHistory } from "react-router-dom";
+import logo from "../../images/logo-no-background.png";
+import "./Register.css";
 
 const Register:React.FC = () => {
     const db = getFirestore();
@@ -83,12 +85,8 @@ const Register:React.FC = () => {
                       onDidDismiss={() => setToastMessage('')}>
 
             </IonToast>
-            <IonHeader>
-                <IonToolbar>
-                    <IonTitle>Healthu</IonTitle>
-                </IonToolbar>
-            </IonHeader>
             <IonContent>
+                <IonImg className="logoRegister" src={logo} alt="Healthu" />
                 <IonItem>
                     <IonLabel position="floating">Nama</IonLabel>
                     <IonInput type="text" ref={namaRef}/>
@@ -101,7 +99,7 @@ const Register:React.FC = () => {
                     <IonLabel position="floating">Password</IonLabel>
                     <IonInput type="password" ref={passRef}/>
                 </IonItem>
-                <IonButton onClick={registerData} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '15px'}}>
+                <IonButton onClick={registerData} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '50px'}}>
                     <IonLabel>Register</IonLabel>
                 </IonButton>
                 <p style={{ textAlign:'center' }}>Already have an account? <br/><a href="/">Login here</a></p>
