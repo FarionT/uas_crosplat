@@ -52,6 +52,7 @@ const CatatanHarian: React.FC = () => {
         getData()
     }, []);
 
+
     return(
         <IonPage >
             <IonHeader>
@@ -69,7 +70,13 @@ const CatatanHarian: React.FC = () => {
                 </IonToolbar>
             </IonHeader>
             <IonContent className="ion-padding" color="light">
-            <Calendar onChange={onChange} value={value} className="kalender" />
+            <div className="kalender-wrapper">
+                <Calendar
+                    onChange={onChange}
+                    value={value}
+                    className="kalender"
+                />
+            </div>
                 <IonCard className="breakfast-category">
                     <IonCardContent className="card">
                         <h2>Breakfast</h2>

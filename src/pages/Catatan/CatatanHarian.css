@@ -9,8 +9,8 @@
 } */
 
 .logo-catatan{
-    padding-left: 15px;
-    width: 80px;
+    padding-left: 10px;
+    width: 85px;
 }
 
 .content-card-isi {
@@ -26,10 +26,30 @@
     color: rgb(69, 69, 69)
 }
 
+.kalener-wrapper{
+    background-color: #f4f5f8;
+}
+
 .kalender{
     margin: 25px auto;
 }
 
 .button-search{
-    padding-right: 15px;
+    padding-right: 10px;
+}
+
+.breakfast-category{
+    background-color: #f4f5f8;
+}
+
+.lunch-category{
+    background-color: #f4f5f8;
+}
+
+.dinner-category{
+    background-color: #f4f5f8;
+}
+
+.snack-category{
+    background-color: #f4f5f8;
 }
