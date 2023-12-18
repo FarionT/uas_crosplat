@@ -85,7 +85,7 @@ const Register:React.FC = () => {
                       onDidDismiss={() => setToastMessage('')}>
 
             </IonToast>
-            <IonContent>
+            <IonContent color="light">
                 <IonImg className="logoRegister" src={logo} alt="Healthu" />
                 <IonItem>
                     <IonLabel position="floating">Nama</IonLabel>

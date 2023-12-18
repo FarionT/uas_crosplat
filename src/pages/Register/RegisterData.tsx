@@ -1,8 +1,9 @@
-import { IonButton, IonCol, IonContent, IonHeader, IonInput, IonItem, IonLabel, IonPage, IonRadio, IonRadioGroup, IonRow, IonTitle, IonToast, IonToolbar } from "@ionic/react"
+import { IonButton, IonCol, IonContent, IonHeader, IonImg, IonInput, IonItem, IonLabel, IonPage, IonRadio, IonRadioGroup, IonRow, IonTitle, IonToast, IonToolbar } from "@ionic/react"
 import { addDoc, collection, getFirestore } from "firebase/firestore";
 import { useEffect, useRef, useState } from "react";
 import { useHistory } from "react-router";
 import '../../firebaseConfig'
+import logo from '../../images/logo-no-background.png';
 
 const RegisterData:React.FC = () => {
     const db = getFirestore();
@@ -82,56 +83,56 @@ const RegisterData:React.FC = () => {
                       onDidDismiss={() => setToastMessage('')}
                     />
             <IonHeader>
-                <IonToolbar>
-                    <IonTitle>Judul App</IonTitle>
+                <IonToolbar color="secondary">
+                    <IonImg slot="start" src={logo} alt="Healthu" style={{ paddingLeft: '10px', width: '85px' }} />
                 </IonToolbar>
             </IonHeader>
-            <IonContent>
-            <IonItem>
+            <IonContent color="light">
+                <IonItem color="light">
                     <IonLabel position="floating">Usia</IonLabel>
                     <IonInput type="number" ref={usiaRef}/>
                 </IonItem>
-                <IonItem>
+                <IonItem color="light">
                     <IonLabel position="floating">Berat Badan (kg)</IonLabel>
                     <IonInput type="number" ref={bbRef}/>
                 </IonItem>
-                <IonItem>
+                <IonItem color="light">
                     <IonLabel position="floating">Tinggi Badan (cm)</IonLabel>
                     <IonInput type="number" ref={tbRef}/>
                 </IonItem>
-                <IonItem>
+                <IonItem color="light">
                     <IonLabel position='floating'>Tingkat Aktivitas</IonLabel>
                     <br/><br/>
                     <IonRadioGroup ref={tingkatRef}>
-                        <IonItem>
+                        <IonItem color="light">
                             <IonRadio slot="start" value="1"></IonRadio>       
                             <IonLabel className="ion-text-wrap">
                                 <b>Kurang Aktif</b><br/>
                                 Jika anda sangat jarang berolahraga atau tidak sama sekali.
                             </IonLabel>
                         </IonItem>
-                        <IonItem>
+                        <IonItem color="light">
                             <IonRadio slot="start" value={2}></IonRadio>       
                             <IonLabel className="ion-text-wrap">
                                 <b>Aktif Ringan</b><br/>
                                 Jika anda berolahraga ringan selama satu hingga tiga hari dalam seminggu.
                             </IonLabel>
                         </IonItem>
-                        <IonItem>
+                        <IonItem color="light">
                             <IonRadio slot="start" value={3}></IonRadio>       
                             <IonLabel className="ion-text-wrap">
                                 <b>Cukup Aktif</b><br/>
                                 Jika anda berolahraga dengan intensitas sedang sekitar tiga hingga lima hari dalam seminggu.
                             </IonLabel>
                         </IonItem>
-                        <IonItem>
+                        <IonItem color="light">
                             <IonRadio slot="start" value={4}></IonRadio>       
                             <IonLabel className="ion-text-wrap">
                                 <b>Sangat Aktif</b><br/>
                                 Jika anda berolahraga dengan intensitas berat selama enam hingga tujuh hari dalam seminggu.
                             </IonLabel>
                         </IonItem>
-                        <IonItem>
+                        <IonItem color="light">
                             <IonRadio slot="start" value={5}></IonRadio>       
                             <IonLabel className="ion-text-wrap">
                                 <b>Ekstra Aktif</b><br/>
@@ -141,7 +142,7 @@ const RegisterData:React.FC = () => {
                         </IonItem>
                     </IonRadioGroup>
                 </IonItem>
-                <IonItem>
+                <IonItem color="light">
                     <IonLabel position='floating'>Gender</IonLabel>
                     <br/>
                     <IonRadioGroup ref={genderInputRef}>
@@ -155,7 +156,7 @@ const RegisterData:React.FC = () => {
                         </IonRow>
                     </IonRadioGroup>
                 </IonItem>
-                <IonButton onClick={addDataHandler}>
+                <IonButton onClick={addDataHandler} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '15px' }}>
                     Finish
                 </IonButton>
                 {/* <p style={{ textAlign:'center' }}>Doesn't have an account yet? <br/><a href="/register">Register here</a></p> */}
