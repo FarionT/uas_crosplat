@@ -87,7 +87,7 @@ const Kalori:React.FC = () =>{
                         <IonMenuButton />
                     </IonButtons>
                     <IonImg slot="start" className="logoLaporan" src={logo} alt="Healthu" />
-                    <IonTitle>Laporan</IonTitle>
+                    <IonTitle className="title-laporan">Laporan</IonTitle>
                 </IonToolbar>
             </IonHeader>
             <IonContent className="ion-padding" color="light">

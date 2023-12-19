@@ -20,6 +20,8 @@ import { useHistory } from 'react-router-dom'; // Import useHistory
 import { getFirestore, doc, updateDoc, query, getDocs, getDoc, collection } from 'firebase/firestore';
 import { arrowBackOutline } from 'ionicons/icons';
 import logo from "../../images/logo-no-background.png";
+import '../Profile/PengelolaanAkun.css'
+
 
 interface UserData {
   id: string;
@@ -47,6 +49,7 @@ const PengelolaanAkun: React.FC = () => {
     getData();
   }, [db]);
 
+
   const handleUpdateUsername = async () => {
     try {
       const newName = newNameRef.current?.value;
@@ -66,7 +69,7 @@ const PengelolaanAkun: React.FC = () => {
         showToastMessage('Username berhasil diperbarui.');
         
         // Navigate back to the profile page
-        history.push('/profile'); // Use history.push
+        history.push('/profile'); 
       }
     } catch (error: any) {
       console.error('Error updating username:', error.message);
@@ -84,10 +87,12 @@ const PengelolaanAkun: React.FC = () => {
       <IonHeader>
         <IonToolbar color="secondary">
             <IonButtons slot="start">
-                <IonBackButton defaultHref="/profile" /> {/* Use IonBackButton */}
+                <IonButton routerLink='/profile'>
+                    <IonIcon icon={arrowBackOutline} />
+                </IonButton>
             </IonButtons>
             <IonImg slot="start" src={logo} alt="Healthu" style={{ paddingLeft: '10px', width: '85px' }} />
-            <IonTitle>Pengelolaan Akun</IonTitle>
+            <IonTitle className='title-kelola'>Pengelolaan Akun</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding" color="light">

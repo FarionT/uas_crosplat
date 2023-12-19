@@ -1,4 +1,4 @@
-import { IonButton, IonContent, IonHeader, IonImg, IonInput, IonItem, IonLabel, IonPage, IonTitle, IonToast, IonToolbar } from "@ionic/react";
+import { IonButton, IonCard, IonContent, IonHeader, IonImg, IonInput, IonItem, IonLabel, IonPage, IonTitle, IonToast, IonToolbar } from "@ionic/react";
 import '../../firebaseConfig';
 import { useEffect, useRef, useState } from "react";
 import { addDoc, collection, getDocs, getFirestore } from "firebase/firestore";
@@ -87,20 +87,22 @@ const Register:React.FC = () => {
             </IonToast>
             <IonContent color="light">
                 <IonImg className="logoRegister" src={logo} alt="Healthu" />
-                <IonItem>
-                    <IonLabel position="floating">Nama</IonLabel>
-                    <IonInput type="text" ref={namaRef}/>
-                </IonItem>
-                <IonItem>
-                    <IonLabel position="floating">Email</IonLabel>
-                    <IonInput type="email" ref={emailRef}/>
-                </IonItem>
-                <IonItem>
-                    <IonLabel position="floating">Password</IonLabel>
-                    <IonInput type="password" ref={passRef}/>
-                </IonItem>
-                <IonButton onClick={registerData} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '50px'}}>
-                    <IonLabel>Register</IonLabel>
+                <IonCard >
+                    <IonItem color="tertiary">
+                        <IonLabel position="floating">Nama</IonLabel>
+                        <IonInput type="text" ref={namaRef}/>
+                    </IonItem>
+                    <IonItem color="tertiary">
+                        <IonLabel position="floating">Email</IonLabel>
+                        <IonInput type="email" ref={emailRef}/>
+                    </IonItem>
+                    <IonItem color="tertiary">
+                        <IonLabel position="floating">Password</IonLabel>
+                        <IonInput type="password" ref={passRef}/>
+                    </IonItem>
+                </IonCard>
+                <IonButton color="secondary" onClick={registerData} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '50px'}}>
+                        <IonLabel>Register</IonLabel>
                 </IonButton>
                 <p style={{ textAlign:'center' }}>Already have an account? <br/><a href="/">Login here</a></p>
             </IonContent>
