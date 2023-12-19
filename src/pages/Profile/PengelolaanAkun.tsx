@@ -1,5 +1,5 @@
 // PengelolaanAkun.tsx
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   IonPage,
   IonHeader,
@@ -30,7 +30,8 @@ interface UserData {
 const PengelolaanAkun: React.FC = () => {
   const history = useHistory(); // Initialize useHistory
   const db = getFirestore();
-  const [newUsername, setNewUsername] = useState('');
+  const newNameRef = useRef<HTMLIonInputElement>(null);
+  // const [newUsername, setNewUsername] = useState('');
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState('');
   const [userNow, setUserNow] = useState<UserData | undefined>();
@@ -48,9 +49,10 @@ const PengelolaanAkun: React.FC = () => {
 
   const handleUpdateUsername = async () => {
     try {
+      const newName = newNameRef.current?.value;
       if (userNow) {
         const userRef = doc(db, 'users', userNow.id);
-        await updateDoc(userRef, { nama: newUsername });
+        await updateDoc(userRef, { nama: newName });
   
         // Fetch the updated user data from Firebase
         const updatedUserSnapshot = await getDoc(userRef);
@@ -92,8 +94,7 @@ const PengelolaanAkun: React.FC = () => {
         <IonLabel position="floating">Username Baru</IonLabel>
         <IonInput
           type="text"
-          value={newUsername}
-          onIonChange={(e) => setNewUsername(e.detail.value!)}
+          ref={newNameRef}
         />
         <IonButton expand="full" onClick={handleUpdateUsername}>
           Update Username
