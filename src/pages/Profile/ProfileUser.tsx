@@ -28,7 +28,7 @@ const ProfileUser: React.FC = () => {
         }
     
         getData()
-      }, [])
+      }, [db])
 
       useEffect(() => {
         if (user) {
@@ -41,7 +41,16 @@ const ProfileUser: React.FC = () => {
         localStorage.setItem("loginEmail", "");
         history.push('/');
         window.location.reload();
-      };
+    };
+
+    useEffect(() => {
+        // Add this useEffect to update userNow when PengelolaanAkun updates the username
+        if (userNow) {
+          const updatedUser = user.find((user) => user.email === localStorage.getItem("loginEmail"));
+          setUserNow(updatedUser);
+        }
+    }, [user]); // Trigger when user data is updated
+    
 
     //   console.log(user);
     //   console.log(user?.find(x=>x.email==localStorage.getItem("loginEmail")));

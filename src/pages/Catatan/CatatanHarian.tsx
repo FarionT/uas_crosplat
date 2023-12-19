@@ -24,6 +24,8 @@ export const MAIL_DATA = [
 
 const CatatanHarian: React.FC = () => {
     const [value, onChange] = useState<Value>(new Date());
+    const [pageTitle, setPageTitle] = useState<string>("");
+
     console.log(value?.toString().substring(4, 15));
     const handleSearchIcon = () => {
         console.log("Searching...");
@@ -49,9 +51,17 @@ const CatatanHarian: React.FC = () => {
             console.log(food);
         }
     
-        getData()
-    }, []);
+        getData();
+        updatePageTitle();
+    }, [value]);
 
+
+    const updatePageTitle = () => {
+        if (value instanceof Date) {
+            setPageTitle(`${value.toLocaleString('id-ID', { weekday: 'long' })}, ${value.getDate()} ${value.toLocaleString('id-ID', { month: 'long' })} ${value.getFullYear()}`);
+        }
+    };
+    
 
     return(
         <IonPage >
@@ -65,7 +75,7 @@ const CatatanHarian: React.FC = () => {
                         <IonIcon icon={searchOutline} /> 
                     </IonButton>
                     <IonTitle>
-                        Tanggal/Hari/Kalender
+                        {pageTitle}
                     </IonTitle>
                 </IonToolbar>
             </IonHeader>
@@ -143,3 +153,7 @@ const CatatanHarian: React.FC = () => {
 }
 
 export default CatatanHarian;
+
+function setPageTitle(arg0: string) {
+    throw new Error("Function not implemented.");
+}

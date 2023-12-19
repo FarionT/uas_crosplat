@@ -16,18 +16,19 @@ import {
   IonIcon,
   IonImg,
 } from '@ionic/react';
-import { getFirestore, doc, updateDoc, query, where, getDocs, DocumentData, collection, getDoc } from 'firebase/firestore';
+import { useHistory } from 'react-router-dom'; // Import useHistory
+import { getFirestore, doc, updateDoc, query, getDocs, getDoc, collection } from 'firebase/firestore';
 import { arrowBackOutline } from 'ionicons/icons';
 import logo from "../../images/logo-no-background.png";
 
 interface UserData {
   id: string;
   nama: string;
-  email: string; // Tambahkan properti email
-  // Tambahkan properti lain sesuai kebutuhan
+  email: string; 
 }
 
 const PengelolaanAkun: React.FC = () => {
+  const history = useHistory(); // Initialize useHistory
   const db = getFirestore();
   const [newUsername, setNewUsername] = useState('');
   const [showToast, setShowToast] = useState(false);
@@ -61,6 +62,9 @@ const PengelolaanAkun: React.FC = () => {
         setUserNow(updatedUser);
   
         showToastMessage('Username berhasil diperbarui.');
+        
+        // Navigate back to the profile page
+        history.push('/profile'); // Use history.push
       }
     } catch (error: any) {
       console.error('Error updating username:', error.message);
@@ -78,9 +82,7 @@ const PengelolaanAkun: React.FC = () => {
       <IonHeader>
         <IonToolbar color="secondary">
             <IonButtons slot="start">
-                <IonButton routerLink='/profile'>
-                    <IonIcon icon={arrowBackOutline} />
-                </IonButton>
+                <IonBackButton defaultHref="/profile" /> {/* Use IonBackButton */}
             </IonButtons>
             <IonImg slot="start" src={logo} alt="Healthu" style={{ paddingLeft: '10px', width: '85px' }} />
             <IonTitle>Pengelolaan Akun</IonTitle>
