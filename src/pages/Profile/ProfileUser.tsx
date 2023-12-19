@@ -38,6 +38,7 @@ const ProfileUser: React.FC = () => {
     }, [user]);
 
     const handleLogout = () => {
+        localStorage.setItem("loginEmail", "");
         history.push('/');
         window.location.reload();
       };

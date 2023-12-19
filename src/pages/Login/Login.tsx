@@ -37,13 +37,18 @@ const Login:React.FC = () => {
         const enteredEmail = emailRef.current?.value?.toString();
         const enteredPass = passRef.current?.value;
         const hashedPass = Md5.hashStr(enteredPass?.toString);
-        if(user?.find(x => x.email == enteredEmail) && user.find(x => x.pass == hashedPass)){
-            localStorage.setItem("loginEmail", enteredEmail!)
-            setToastMessage('Login Berhasil')
-            history.push('/home')
+        if(enteredEmail != "" && enteredPass != ""){
+            if(user?.find(x => x.email == enteredEmail) && user.find(x => x.pass == hashedPass)){
+                localStorage.setItem("loginEmail", enteredEmail!)
+                setToastMessage('Login Berhasil')
+                history.push('/home')
+            }else{
+                setToastMessage('Email atau Password salah')
+            }
         }else{
-            setToastMessage('Email atau Password salah')
+            setToastMessage('Masukkan data dengan benar!')
         }
+    
     }
     return(
         <IonPage>
@@ -56,11 +61,11 @@ const Login:React.FC = () => {
                 <IonImg className="logoLogin" src={logo} alt="Healthu" />
                 <IonItem color="light">
                     <IonLabel position="floating">Email</IonLabel>
-                    <IonInput type="email" ref={emailRef}/>
+                    <IonInput type="email" ref={emailRef} required/>
                 </IonItem>
                 <IonItem color="light">
                     <IonLabel position="floating">Password</IonLabel>
-                    <IonInput type="password" ref={passRef}/>
+                    <IonInput type="password" ref={passRef} required/>
                 </IonItem>
                 <IonButton onClick={loginHandler} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '50px' }}>
                     Login
