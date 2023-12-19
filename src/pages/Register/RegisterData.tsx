@@ -78,7 +78,6 @@ const RegisterData:React.FC = () => {
     })
     return(
         <IonPage>
-            <IonPage>
             <IonToast isOpen={!! toastMessage}
                       message={toastMessage}
                       duration={2000}
@@ -163,7 +162,6 @@ const RegisterData:React.FC = () => {
                 </IonButton>
                 {/* <p style={{ textAlign:'center' }}>Doesn't have an account yet? <br/><a href="/register">Register here</a></p> */}
             </IonContent>
-        </IonPage>
         </IonPage>
     )
 }
