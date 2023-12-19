@@ -17,7 +17,7 @@ const RegisterData:React.FC = () => {
 
     const [toastMessage, setToastMessage] = useState('');
     
-
+    // function untuk memasukkan data ke dalam firestore
     const addDataHandler = async() => {
         const enteredBb = bbRef.current?.value;
         const enteredTb = tbRef.current?.value;
@@ -26,6 +26,7 @@ const RegisterData:React.FC = () => {
         const enteredGender = genderInputRef.current?.value;
         console.log(enteredBb, enteredTb, enteredTingkat, enteredGender);
 
+        // function untuk mengecek apakah data sudah terisi atau belum
         if(!enteredBb || enteredBb.toString().trim().length === 0 || !enteredTb || enteredTb.toString().trim().length === 0 ||
         !enteredTingkat || enteredTingkat.toString().trim().length === 0 || !enteredGender || enteredGender.toString().trim().length === 0 ){
             setToastMessage('Masukkan data dengan lengkap!')
@@ -67,6 +68,7 @@ const RegisterData:React.FC = () => {
             }
         }
     }
+    // function untuk mengecek apakah ada user yang sudah login atau belum
     useEffect(()=>{
         const logged = localStorage.getItem("loginEmail");
         console.log(logged)

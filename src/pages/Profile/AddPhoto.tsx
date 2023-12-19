@@ -17,6 +17,8 @@ const AddPhoto: React.FC = () => {
         path:string | undefined,
         preview:string
     }>();
+
+    // FUNCTION UNTUK MENGAMBIL FOTO
     const takePhotoHandler = async() => {
 
         const photo = await Camera.getPhoto({
@@ -37,6 +39,7 @@ const AddPhoto: React.FC = () => {
         })
     }
 
+    // function untuk memasukkan foto ke dalam storage
     const insertHandler = async() => {
         const fileName = new Date().getTime() + '.jpeg';
         const photoBlob = await fetch(takenPhoto!.preview).then((res) => res.blob());
@@ -44,12 +47,13 @@ const AddPhoto: React.FC = () => {
         uploadBytes(storageRef, photoBlob as Blob).then((snapshot)=>{
           console.log('upload file success');
           getDownloadURL(ref(storage, fileName)).then((url)=>{
-            addMemoryHandler(url);
+            addPhotoHandler(url);
           })
         })
       }
 
-    const addMemoryHandler = async(url:String) => {
+      // function untuk menambahkan 
+    const addPhotoHandler = async(url:String) => {
         // if(!enteredTitle || enteredTitle.toString().trim().length === 0 || !takenPhoto || !chosenMemoryType){
         //     return;
         // }

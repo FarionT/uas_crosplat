@@ -34,6 +34,8 @@ const CatatanHarian: React.FC = () => {
     const db = getFirestore();
 
     const [food, setFood] = useState<Array<any>>();
+    
+    // untuk mengambil data makanan yang telah dimakan dari firestore
     useEffect(()=>{
         async function getData(){
             const querySnapshot = await getDocs(collection(db, "users-food"));
@@ -55,7 +57,7 @@ const CatatanHarian: React.FC = () => {
         updatePageTitle();
     }, [value]);
 
-
+    // untuk melakukan update pada judul di tengah atas page
     const updatePageTitle = () => {
         if (value instanceof Date) {
             setPageTitle(`${value.toLocaleString('id-ID', { weekday: 'long' })}, ${value.getDate()} ${value.toLocaleString('id-ID', { month: 'long' })} ${value.getFullYear()}`);

@@ -46,6 +46,7 @@ const SearchPage: React.FC = () => {
   const [value, onChange] = useState<Value>(new Date());
   console.log(value);
 
+  // function untuk mengambil data dari api berdasarkan input makanan dari user
   const searchFood = () => {
     const inputFood2 = inputFood.current?.value;
     console.log(inputFood2);
@@ -62,6 +63,7 @@ const SearchPage: React.FC = () => {
   const history = useHistory();
   const db = getFirestore();
 
+  // function untuk menambahkan makanan yang dimakan user ke firestore
   const addFoodToDatabase = async() => {
     console.log(value);
     const currEmail = localStorage.getItem("loginEmail");

@@ -37,6 +37,7 @@ const Login:React.FC = () => {
         const enteredEmail = emailRef.current?.value?.toString();
         const enteredPass = passRef.current?.value;
         const hashedPass = Md5.hashStr(enteredPass?.toString);
+        // untuk mengecek apakah email dan password sudah terisi atau tidak
         if(enteredEmail != "" && enteredPass != ""){
             if(user?.find(x => x.email == enteredEmail) && user.find(x => x.pass == hashedPass)){
                 localStorage.setItem("loginEmail", enteredEmail!)

@@ -31,6 +31,8 @@ const Kalori:React.FC = () =>{
     
     // var total1 = breakfast + lunch + dinner + snack;
     var total1 = 0;
+    
+    // untuk mengambil data dari firestore
     useEffect(()=>{
         async function getData(){
             const querySnapshot = await getDocs(collection(db, "users-food"));
@@ -52,7 +54,10 @@ const Kalori:React.FC = () =>{
         getData();
           
     }, []);
+    // untuk mengambil data user yang sedang login sekarang
     const userNow = user?.find(x => x.email == localStorage.getItem("loginEmail"));
+
+    // untuk menghitung jumlah kalori dari tiap kategori makanan
     food?.map(makanan => {
         if(makanan.email == localStorage.getItem("loginEmail") && makanan.tanggal == value?.toString().substring(4, 15)){
             if(makanan.category == 'bf'){

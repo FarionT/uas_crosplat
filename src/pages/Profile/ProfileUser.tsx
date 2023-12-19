@@ -14,7 +14,9 @@ const ProfileUser: React.FC = () => {
     const [user, setUser] = useState<Array<any>>();
     const [userData, setUserData] = useState<Array<any>>();
     const [userNow, setUserNow] = useState();
+    
 
+    // function mengambil data dari firestore
     useEffect(()=>{
         async function getData(){
           const querySnapshot = await getDocs(collection(db, "users"));
@@ -30,23 +32,26 @@ const ProfileUser: React.FC = () => {
         getData()
       }, [db])
 
-      useEffect(() => {
+    // function untuk mengambil user yang sedang login sekarang
+    useEffect(() => {
         if (user) {
             const currentUser = user.find(user => user.email === localStorage.getItem("loginEmail"));
             setUserNow(currentUser);
         }
     }, [user]);
 
+    //function untuk melakukan logout
     const handleLogout = () => {
         localStorage.setItem("loginEmail", "");
         history.push('/');
         window.location.reload();
     };
 
+    // function untuk mengambil data user yang telah di update
     useEffect(() => {
         // Add this useEffect to update userNow when PengelolaanAkun updates the username
         if (userNow) {
-          const updatedUser = user.find((user) => user.email === localStorage.getItem("loginEmail"));
+          const updatedUser = user!.find((user) => user.email === localStorage.getItem("loginEmail"));
           setUserNow(updatedUser);
         }
     }, [user]); // Trigger when user data is updated
