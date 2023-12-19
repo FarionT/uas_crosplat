@@ -56,12 +56,12 @@ const ProfileUser: React.FC = () => {
             <IonMenuButton />
           </IonButtons>
           <IonImg slot="start" className="logoProfile" src={logo} alt="Healthu" />
-          <IonTitle className='title-profile'>Profile</IonTitle>
+          <IonTitle className='title-profile centered-title'>Profile</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding" color="light">
         <div className="ion-text-center ion-margin-bottom" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
-          <IonAvatar>
+          <IonAvatar className='avatar-profile'>
             <IonImg src={man} alt="Avatar" />
           </IonAvatar>
           {userNow && (
@@ -81,9 +81,17 @@ const ProfileUser: React.FC = () => {
                 <IonCardSubtitle>Mengubah username dan Menghapus Akun</IonCardSubtitle>
               </IonCardContent>
             </IonCard>
+            <IonCard routerLink="/album" className="albumCard">
+              <IonCardHeader>
+                <IonCardTitle>Album Foto</IonCardTitle>
+              </IonCardHeader>
+              <IonCardContent>
+                <IonCardSubtitle>Berisikan kumpulan foto baik foto diri maupun makanan harian</IonCardSubtitle>
+              </IonCardContent>
+            </IonCard>
           </IonCol>
         </IonRow>
-        <IonRow>
+        {/* <IonRow>
           <IonCol>
             <IonCard className="updateCard">
               <IonCardHeader>
@@ -102,7 +110,7 @@ const ProfileUser: React.FC = () => {
               </IonCardContent>
             </IonCard>
           </IonCol>
-        </IonRow>
+        </IonRow> */}
         <IonButton color="danger" onClick={handleLogout} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '15px' }}>
           LOGOUT
         </IonButton>

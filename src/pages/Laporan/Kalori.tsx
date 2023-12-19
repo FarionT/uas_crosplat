@@ -87,23 +87,23 @@ const Kalori:React.FC = () =>{
                         <IonMenuButton />
                     </IonButtons>
                     <IonImg slot="start" className="logoLaporan" src={logo} alt="Healthu" />
-                    <IonTitle className="title-laporan">Laporan</IonTitle>
+                    <IonTitle className="title-laporan centered-title">Laporan</IonTitle>
                 </IonToolbar>
             </IonHeader>
             <IonContent className="ion-padding" color="light">
             <Calendar onChange={onChange} value={value} className="kalender" />
                 <IonCard className="kaloriCard">
-                    <IonCardHeader>Kalori</IonCardHeader>
+                    <IonCardHeader>Kalori:</IonCardHeader>
                     <IonCardContent>
-                        <h1>{total1}</h1>
-                        <h2>Target: {userNow && userNow!.kalori}kkal</h2>
+                        <h1 style={{marginBottom: '8px'}}>{total1} kkal</h1>
+                        <h2 style={{fontWeight: 'bold'}}>Angka Kecukupan Gizi: {userNow && userNow!.kalori} kkal</h2>
                         <div className="horizontal-line" />
                         <div className="kalori-kanan">
-                            <h2>Kal(kkal)</h2>
+                            <h2 style={{marginBottom: '8px'}}>Kalori(kkal)</h2>
                         </div>
-                        <IonList>
-                            <IonItem className="custom-item">
-                                <div className="left-content">
+                        <IonList className="list-kalori" color="dark">
+                            <IonItem className="custom-item-makan1">
+                                <div className="left-content" >
                                     <IonLabel>Makan Pagi</IonLabel>
                                 </div>
                                 <div className="right-content">
@@ -113,7 +113,7 @@ const Kalori:React.FC = () =>{
                                     <IonLabel>{breakfast1}</IonLabel>
                                 </div>
                             </IonItem>
-                            <IonItem className="custom-item">
+                            <IonItem className="custom-item-makan2">
                                 <div className="left-content">
                                     <IonLabel>Makan Siang</IonLabel>
                                 </div>
@@ -124,7 +124,7 @@ const Kalori:React.FC = () =>{
                                     <IonLabel>{lunch1}</IonLabel>
                                 </div>
                             </IonItem>
-                            <IonItem className="custom-item">
+                            <IonItem className="custom-item-makan3">
                                 <div className="left-content">
                                     <IonLabel>Makan Malam</IonLabel>
                                 </div>
@@ -135,7 +135,7 @@ const Kalori:React.FC = () =>{
                                     <IonLabel>{dinner1}</IonLabel>
                                 </div>
                             </IonItem>
-                            <IonItem className="custom-item">
+                            <IonItem className="custom-item-makan4">
                                 <div className="left-content">
                                     <IonLabel>Camilan</IonLabel>
                                 </div>
@@ -152,7 +152,7 @@ const Kalori:React.FC = () =>{
                 <IonCard className="consumeCard">
                     <IonCardContent>
                         <h1>Makanan Dikonsumsi</h1>
-                        <IonList>
+                        <IonList className="list-makanan">
                         {food?.map(makanan => {
                             if(makanan.email == localStorage.getItem("loginEmail") && makanan.tanggal == value?.toString().substring(4, 15)){
                                 if(makanan.category == 'bf'){
@@ -171,7 +171,7 @@ const Kalori:React.FC = () =>{
                                 // total += (makanan.foodCalory * makanan.totalEaten);
                                 // setTotal(makanan.foodCalory * makanan.totalEaten);
                                 return(
-                                    <IonItem className="custom-item" key={makanan.id}>
+                                    <IonItem className="custom-item-makan5" key={makanan.id}>
                                         <div className="left-content" style={{fontWeight: 'bold'}}>
                                             <h2>{makanan.foodName}</h2>
                                         </div>

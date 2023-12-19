@@ -76,7 +76,7 @@ const CatatanHarian: React.FC = () => {
                     <IonButton className="button-search" slot="end" onClick={handleSearchIcon} color="primary" href="/search">
                         <IonIcon icon={searchOutline} /> 
                     </IonButton>
-                    <IonTitle>
+                    <IonTitle className="title-catatan">
                         {pageTitle}
                     </IonTitle>
                 </IonToolbar>
