@@ -55,11 +55,19 @@
 }
 
 .title-catatan{
-    font-size: 16px;
+    text-align: center;
+    font-size: 14px;
     font-weight: bold;
-    padding: auto;
-    margin-top: auto;
+    /* padding: auto; */
+    /* margin-top: auto;
     margin-bottom: auto;
     margin-left: auto;
-    margin-right: auto;
+    margin-right: auto; */
 }
+
+/* .centered-title {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */

@@ -1,16 +1,16 @@
 .title-kelola{
+    text-align: center;
     font-size: large;
     font-weight: bold;
-    margin-top: auto;
+    /* margin-top: auto;
     margin-bottom: auto;
     margin-left: auto;
-    margin-right: auto;
-}
+    margin-right: auto;*/
+} 
 
-.centered-title {
+/* .centered-title {
     flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-  
+} */

@@ -56,7 +56,7 @@ const ProfileUser: React.FC = () => {
             <IonMenuButton />
           </IonButtons>
           <IonImg slot="start" className="logoProfile" src={logo} alt="Healthu" />
-          <IonTitle className='title-profile centered-title'>Profile</IonTitle>
+          <IonTitle className='title-profile'>Profile</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding" color="light">

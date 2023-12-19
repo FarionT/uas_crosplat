@@ -92,7 +92,7 @@ const PengelolaanAkun: React.FC = () => {
                 </IonButton>
             </IonButtons>
             <IonImg slot="start" src={logo} alt="Healthu" style={{ paddingLeft: '10px', width: '85px' }} />
-            <IonTitle className='title-kelola centered-title'>Pengelolaan Akun</IonTitle>
+            <IonTitle className='title-kelola'>Pengelolaan Akun</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent className="ion-padding" color="light">

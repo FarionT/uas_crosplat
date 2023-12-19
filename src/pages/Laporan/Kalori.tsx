@@ -87,7 +87,7 @@ const Kalori:React.FC = () =>{
                         <IonMenuButton />
                     </IonButtons>
                     <IonImg slot="start" className="logoLaporan" src={logo} alt="Healthu" />
-                    <IonTitle className="title-laporan centered-title">Laporan</IonTitle>
+                    <IonTitle className="title-laporan">Laporan</IonTitle>
                 </IonToolbar>
             </IonHeader>
             <IonContent className="ion-padding" color="light">
@@ -95,7 +95,7 @@ const Kalori:React.FC = () =>{
                 <IonCard className="kaloriCard">
                     <IonCardHeader>Kalori:</IonCardHeader>
                     <IonCardContent>
-                        <h1 style={{marginBottom: '8px'}}>{total1} kkal</h1>
+                        <h1 style={{marginBottom: '8px'}}>{(total1).toFixed(2)} kkal</h1>
                         <h2 style={{fontWeight: 'bold'}}>Angka Kecukupan Gizi: {userNow && userNow!.kalori} kkal</h2>
                         <div className="horizontal-line" />
                         <div className="kalori-kanan">
@@ -107,10 +107,10 @@ const Kalori:React.FC = () =>{
                                     <IonLabel>Makan Pagi</IonLabel>
                                 </div>
                                 <div className="right-content">
-                                    <IonLabel>{(breakfast1 * 100 / total1).toFixed(3)}%</IonLabel>
+                                    <IonLabel>{(breakfast1 * 100 / total1).toFixed(2)}%</IonLabel>
                                 </div>
                                 <div className="right-content2">
-                                    <IonLabel>{breakfast1}</IonLabel>
+                                    <IonLabel>{(breakfast1).toFixed(2)}</IonLabel>
                                 </div>
                             </IonItem>
                             <IonItem className="custom-item-makan2">
@@ -118,10 +118,10 @@ const Kalori:React.FC = () =>{
                                     <IonLabel>Makan Siang</IonLabel>
                                 </div>
                                 <div className="right-content">
-                                    <IonLabel>{(lunch1 * 100 / total1).toFixed(3)}%</IonLabel>
+                                    <IonLabel>{(lunch1 * 100 / total1).toFixed(2)}%</IonLabel>
                                 </div>
                                 <div className="right-content2">
-                                    <IonLabel>{lunch1}</IonLabel>
+                                    <IonLabel>{(lunch1).toFixed(2)}</IonLabel>
                                 </div>
                             </IonItem>
                             <IonItem className="custom-item-makan3">
@@ -129,10 +129,10 @@ const Kalori:React.FC = () =>{
                                     <IonLabel>Makan Malam</IonLabel>
                                 </div>
                                 <div className="right-content">
-                                    <IonLabel>{(dinner1 * 100 / total1).toFixed(3)}%</IonLabel>
+                                    <IonLabel>{(dinner1 * 100 / total1).toFixed(2)}%</IonLabel>
                                 </div>
                                 <div className="right-content2">
-                                    <IonLabel>{dinner1}</IonLabel>
+                                    <IonLabel>{(dinner1).toFixed(2)}</IonLabel>
                                 </div>
                             </IonItem>
                             <IonItem className="custom-item-makan4">
@@ -140,10 +140,10 @@ const Kalori:React.FC = () =>{
                                     <IonLabel>Camilan</IonLabel>
                                 </div>
                                 <div className="right-content">
-                                    <IonLabel>{(snack1 * 100 /total1).toFixed(3)}%</IonLabel>
+                                    <IonLabel>{(snack1 * 100 /total1).toFixed(2)}%</IonLabel>
                                 </div>
                                 <div className="right-content2">
-                                    <IonLabel>{snack1}</IonLabel>
+                                    <IonLabel>{(snack1).toFixed(2)}</IonLabel>
                                 </div>
                             </IonItem>
                         </IonList>
@@ -179,7 +179,7 @@ const Kalori:React.FC = () =>{
                                             <h2>{makanan.totalEaten} g</h2>
                                         </div>
                                         <div className="right-content2" style={{fontWeight: 'bold'}}>
-                                            <h2>{makanan.foodCalory}</h2>
+                                            <h2>{makanan.foodCalory} kkal/g</h2>
                                         </div>
                                     </IonItem>
                                 )
