@@ -1,5 +1,5 @@
 import { IonAlert, IonButton, IonButtons, IonCard, IonCardContent, IonContent, IonHeader, IonIcon, IonImg, IonMenuButton, IonModal, IonPage, IonSearchbar, IonTitle, IonToolbar } from "@ionic/react";
-import { addCircleOutline, addOutline, colorFill, searchOutline } from "ionicons/icons";
+import { addCircleOutline, addOutline, colorFill, searchOutline, trash, trashBin, trashOutline } from "ionicons/icons";
 import { MouseEventHandler, useEffect, useState } from "react";
 import "./CatatanHarian.css";
 import { collection, getDoc, getDocs, getFirestore } from "firebase/firestore";
@@ -73,28 +73,32 @@ const CatatanHarian: React.FC = () => {
     };
     
     // untuk delete makanan
-    const deleteFood = async() => {
+    const deleteFood = async () => {
         try {
-            // const userRef = doc(db, 'users', userNow.id);
-            await deleteDoc(doc(db, 'users-food', foodNow));
-    
-            // Fetch the updated user data from Firebase
-            // const updatedUserSnapshot = await getDoc(userRef);
-            // const updatedUser = { ...(updatedUserSnapshot.data() as UserData), id: updatedUserSnapshot.id };
-    
-            // console.log('Deleted user food from Firebase:', updatedUser);
-    
-            // Update the userNow state with the updated data    
-            showToastMessage('Makanan berhasil dihapus');
-            
-            // Navigate back to the profile page
-            history.replace('/home'); 
-          } catch (error: any) {
-            console.error('Error updating username:', error.message);
-            showToastMessage('Terjadi kesalahan. Coba lagi nanti.');
+          // const userRef = doc(db, 'users', userNow.id);
+          await deleteDoc(doc(db, 'users-food', foodNow));
+      
+          // Fetch the updated user data from Firebase
+          // const updatedUserSnapshot = await getDoc(userRef);
+          // const updatedUser = { ...(updatedUserSnapshot.data() as UserData), id: updatedUserSnapshot.id };
+      
+          // console.log('Deleted user food from Firebase:', updatedUser);
+      
+          // Update the userNow state with the updated data    
+          showToastMessage('Makanan berhasil dihapus');
+      
+          // Update the food state after deletion
+          const updatedFood = food?.filter((item) => item.id !== foodNow);
+          setFood(updatedFood);
+      
+          // Navigate back to the profile page
+          history.replace('/home');
+        } catch (error: any) {
+          console.error('Error updating username:', error.message);
+          showToastMessage('Terjadi kesalahan. Coba lagi nanti.');
         }
         setConfirm(false);
-    }
+      };
 
     // untuk menampilkan pesan toast
     const showToastMessage = (message: string) => {
@@ -153,7 +157,14 @@ const CatatanHarian: React.FC = () => {
                                     <div className="content-card-isi" key={makanan.id}>
                                         <p>{makanan.foodName}</p><br/>
                                         <p>{makanan.totalEaten} g</p>
-                                        <IonButton onClick={() => {setFoodNow(makanan.id), openHandler()}}>Delete</IonButton>
+                                        <IonIcon
+                                            slot="end"
+                                            icon={trash}
+                                            onClick={() => {
+                                            setFoodNow(makanan.id);
+                                            openHandler();
+                                            }}
+                                        />
                                     </div>
                                 )
                             }
@@ -169,6 +180,14 @@ const CatatanHarian: React.FC = () => {
                                     <div className="content-card-isi" key={makanan.id}>
                                         <p>{makanan.foodName}</p><br/>
                                         <p>{makanan.totalEaten} g</p>
+                                        <IonIcon
+                                            slot="end"
+                                            icon={trash}
+                                            onClick={() => {
+                                            setFoodNow(makanan.id);
+                                            openHandler();
+                                            }}
+                                        />
                                     </div>
                                 )
                             }
@@ -184,6 +203,14 @@ const CatatanHarian: React.FC = () => {
                                     <div className="content-card-isi" key={makanan.id}>
                                         <p>{makanan.foodName}</p><br/>
                                         <p>{makanan.totalEaten} g</p>
+                                        <IonIcon
+                                            slot="end"
+                                            icon={trash}
+                                            onClick={() => {
+                                            setFoodNow(makanan.id);
+                                            openHandler();
+                                            }}
+                                        />
                                     </div>
                                 )
                             }
@@ -199,6 +226,14 @@ const CatatanHarian: React.FC = () => {
                                     <div className="content-card-isi" key={makanan.id}>
                                         <p>{makanan.foodName}</p><br/>
                                         <p>{makanan.totalEaten} g</p>
+                                        <IonIcon
+                                            slot="end"
+                                            icon={trash}
+                                            onClick={() => {
+                                            setFoodNow(makanan.id);
+                                            openHandler();
+                                            }}
+                                        />
                                     </div>
                                 )
                             }
