@@ -17,6 +17,7 @@ const AddPhoto: React.FC = () => {
         path:string | undefined,
         preview:string
     }>();
+    const [updateData, setUpdateData] = useState(false);
 
     // FUNCTION UNTUK MENGAMBIL FOTO
     const takePhotoHandler = async() => {
@@ -44,15 +45,20 @@ const AddPhoto: React.FC = () => {
         const fileName = new Date().getTime() + '.jpeg';
         const photoBlob = await fetch(takenPhoto!.preview).then((res) => res.blob());
         const storageRef = ref(storage, fileName);
+
+        // Mengunggah foto ke dalam storage
         uploadBytes(storageRef, photoBlob as Blob).then((snapshot)=>{
           console.log('upload file success');
+
+          // Mendapatkan URL download foto setelah diunggah
           getDownloadURL(ref(storage, fileName)).then((url)=>{
+            // Memanggil fungsi untuk menambahkan foto ke dalam Firestore
             addPhotoHandler(url);
           })
         })
       }
 
-      // function untuk menambahkan 
+    // function untuk menambahkan 
     const addPhotoHandler = async(url:String) => {
         // if(!enteredTitle || enteredTitle.toString().trim().length === 0 || !takenPhoto || !chosenMemoryType){
         //     return;
@@ -67,11 +73,14 @@ const AddPhoto: React.FC = () => {
               foto: url
             });
             console.log("Document written with ID: ", docRef.id);
-            }catch(e){
-              console.log("error adding document", e);
-            }
+
+            setUpdateData(true);
+        }catch(e){
+            console.log("error adding document", e);
+        }
         history.replace('/album');
-    }
+    };
+
     return(
         <IonPage>
             <IonHeader>

@@ -1,4 +1,4 @@
-import { IonAvatar, IonButton, IonButtons, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCol, IonContent, IonHeader, IonIcon, IonImg, IonMenuButton, IonModal, IonPage, IonRow, IonSearchbar, IonTitle, IonToolbar, withIonLifeCycle } from "@ionic/react";
+import { IonAvatar, IonButton, IonButtons, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCol, IonContent, IonHeader, IonIcon, IonImg, IonMenuButton, IonModal, IonPage, IonRow, IonSearchbar, IonTitle, IonToolbar, useIonViewWillEnter, withIonLifeCycle } from "@ionic/react";
 import { addCircleOutline, addOutline, arrowBackOutline, chevronForward, colorFill, searchOutline } from "ionicons/icons";
 import man from '../../images/man.png';
 import { useEffect, useState } from "react";
@@ -10,22 +10,24 @@ import './Album.css'
 const Album: React.FC = () => {
     const db = getFirestore();
     const [album, setAlbum] = useState<Array<any>>();
+    const [updateData, setUpdateData] = useState(false);
     
     // mengambil data dari firestore
-    useEffect(()=>{
-        async function getData(){
+    useIonViewWillEnter(() => {
+        async function getData() {
           const querySnapshot = await getDocs(collection(db, "users-album"));
           console.log('querySnapshot: ', querySnapshot);
-          setAlbum(querySnapshot.docs.map((doc)=>( {...doc.data(), id:doc.id})));
-    
-          querySnapshot.forEach((doc)=>{
+          setAlbum(querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+      
+          querySnapshot.forEach((doc) => {
             console.log(`${doc.id}=> ${doc.data()}`);
             console.log('doc: ', doc);
-          })
+          });
         }
-    
-        getData()
-      }, [])
+      
+        getData();
+    }, [db, updateData]);
+
     return(
         <IonPage>
             <IonHeader>
