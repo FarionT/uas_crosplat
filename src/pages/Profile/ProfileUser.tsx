@@ -78,7 +78,7 @@ const ProfileUser: React.FC = () => {
                 <IonCardTitle>Pengelolaan Akun</IonCardTitle>
               </IonCardHeader>
               <IonCardContent>
-                <IonCardSubtitle>Mengubah username dan Menghapus Akun</IonCardSubtitle>
+                <IonCardSubtitle>Mengubah username</IonCardSubtitle>
               </IonCardContent>
             </IonCard>
             <IonCard routerLink="/album" className="albumCard">
@@ -86,7 +86,7 @@ const ProfileUser: React.FC = () => {
                 <IonCardTitle>Album Foto</IonCardTitle>
               </IonCardHeader>
               <IonCardContent>
-                <IonCardSubtitle>Berisikan kumpulan foto baik foto diri maupun makanan harian</IonCardSubtitle>
+                <IonCardSubtitle>Berisikan kumpulan foto harian anda</IonCardSubtitle>
               </IonCardContent>
             </IonCard>
           </IonCol>
