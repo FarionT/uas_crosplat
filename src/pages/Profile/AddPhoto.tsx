@@ -83,7 +83,7 @@ const AddPhoto: React.FC = () => {
                         </IonButton>
                     </IonButtons>
                     <IonImg slot="start" src={logo} alt="Healthu" style={{ paddingLeft: '10px', width: '85px' }} />
-                    <IonTitle>
+                    <IonTitle className="add-photo-title">
                         Add Photo
                     </IonTitle>
                 </IonToolbar>

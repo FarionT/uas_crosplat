@@ -1,0 +1,20 @@
+.album-title{
+    width: 100%;
+    position: absolute;
+    left: 0;
+    height: 0;
+    text-align: center;
+}
+
+.add-photo-title{
+    width: 100%;
+    position: absolute;
+    left: 0;
+    height: 0;
+    text-align: center;
+}
+
+.album-card{
+    display: flex;
+    flex-direction: column;
+}

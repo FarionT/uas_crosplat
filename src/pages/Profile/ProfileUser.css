@@ -16,9 +16,14 @@
 }
 
 .title-profile{
-    text-align: center;
+    /* text-align: center !important; */
     font-weight: bold;
     font-size: large;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    height: 0;
+    text-align: center;
     /* padding: auto; */
     /* margin-top: auto;
     margin-bottom: auto;
