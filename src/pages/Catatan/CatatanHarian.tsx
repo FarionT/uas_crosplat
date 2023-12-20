@@ -54,10 +54,10 @@ const CatatanHarian: React.FC = () => {
             // setFood(dataBaru);
             console.log(food);
         
-            querySnapshot.forEach((doc)=>{
-                console.log(`${doc.id}=> ${doc.data()}`);
-                console.log('doc: ', doc);
-            })
+            // querySnapshot.forEach((doc)=>{
+            //     console.log(`${doc.id}=> ${doc.data()}`);
+            //     console.log('doc: ', doc);
+            // })
             console.log(food);
         }
     
