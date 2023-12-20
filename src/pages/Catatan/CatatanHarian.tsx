@@ -1,4 +1,4 @@
-import { IonAlert, IonButton, IonButtons, IonCard, IonCardContent, IonContent, IonHeader, IonIcon, IonImg, IonMenuButton, IonModal, IonPage, IonSearchbar, IonTitle, IonToolbar } from "@ionic/react";
+import { IonAlert, IonButton, IonButtons, IonCard, IonCardContent, IonContent, IonHeader, IonIcon, IonImg, IonMenuButton, IonModal, IonPage, IonSearchbar, IonTitle, IonToast, IonToolbar } from "@ionic/react";
 import { addCircleOutline, addOutline, colorFill, searchOutline, trash, trashBin, trashOutline } from "ionicons/icons";
 import { MouseEventHandler, useEffect, useState } from "react";
 import "./CatatanHarian.css";
@@ -31,7 +31,7 @@ const CatatanHarian: React.FC = () => {
     const [foodNow, setFoodNow] = useState('');
     const history = useHistory();
 
-    const [toastMessage, setToastMessage] = useState('');
+    const [toastMessage, setToastMessage] = useState("");
     // const [userNow, setUserNow] = useState<UserData | undefined>();
 
     console.log(value?.toString().substring(4, 15));
@@ -86,6 +86,7 @@ const CatatanHarian: React.FC = () => {
       
           // Update the userNow state with the updated data    
           showToastMessage('Makanan berhasil dihapus');
+          console.log("lewat");
       
           // Update the food state after deletion
           const updatedFood = food?.filter((item) => item.id !== foodNow);
@@ -118,6 +119,11 @@ const CatatanHarian: React.FC = () => {
 
     return(
         <IonPage >
+            <IonToast isOpen={!!toastMessage}
+                message={toastMessage}
+                duration={1500}
+                onDidDismiss={() => setToastMessage('')}
+            />
             <IonAlert isOpen={confirm}
                 header="Are you sure?"
                 message="Do you want to delete this food? This cannot be undone"
@@ -126,6 +132,7 @@ const CatatanHarian: React.FC = () => {
                 {text:'Yes', handler: () => {deleteFood()}},
                 ]}
             />
+            
             <IonHeader>
                 <IonToolbar color="secondary">
                     <IonButtons slot="start">
@@ -164,6 +171,7 @@ const CatatanHarian: React.FC = () => {
                                             setFoodNow(makanan.id);
                                             openHandler();
                                             }}
+                                            style={{ cursor: 'pointer' }}
                                         />
                                     </div>
                                 )
