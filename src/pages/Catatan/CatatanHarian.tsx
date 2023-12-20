@@ -1,14 +1,15 @@
-import { IonButton, IonButtons, IonCard, IonCardContent, IonContent, IonHeader, IonIcon, IonImg, IonMenuButton, IonPage, IonSearchbar, IonTitle, IonToolbar } from "@ionic/react";
+import { IonAlert, IonButton, IonButtons, IonCard, IonCardContent, IonContent, IonHeader, IonIcon, IonImg, IonMenuButton, IonModal, IonPage, IonSearchbar, IonTitle, IonToolbar } from "@ionic/react";
 import { addCircleOutline, addOutline, colorFill, searchOutline } from "ionicons/icons";
 import { MouseEventHandler, useEffect, useState } from "react";
 import "./CatatanHarian.css";
-import { collection, getDocs, getFirestore } from "firebase/firestore";
+import { collection, getDoc, getDocs, getFirestore } from "firebase/firestore";
 import 'react-calendar/dist/Calendar.css';
 import '../../firebaseConfig';
 import { render } from "react-dom";
 import Calendar from 'react-calendar';
-
+import { doc, deleteDoc } from "firebase/firestore";
 import logo from '../../images/logo-no-background.png'
+import { useHistory } from "react-router";
 
 
 type ValuePiece = Date | null;
@@ -25,6 +26,13 @@ export const MAIL_DATA = [
 const CatatanHarian: React.FC = () => {
     const [value, onChange] = useState<Value>(new Date());
     const [pageTitle, setPageTitle] = useState<string>("");
+    const [confirm, setConfirm] = useState(false);
+    const [showToast, setShowToast] = useState(false);
+    const [foodNow, setFoodNow] = useState('');
+    const history = useHistory();
+
+    const [toastMessage, setToastMessage] = useState('');
+    // const [userNow, setUserNow] = useState<UserData | undefined>();
 
     console.log(value?.toString().substring(4, 15));
     const handleSearchIcon = () => {
@@ -64,9 +72,56 @@ const CatatanHarian: React.FC = () => {
         }
     };
     
+    // untuk delete makanan
+    const deleteFood = async() => {
+        try {
+            // const userRef = doc(db, 'users', userNow.id);
+            await deleteDoc(doc(db, 'users-food', foodNow));
+    
+            // Fetch the updated user data from Firebase
+            // const updatedUserSnapshot = await getDoc(userRef);
+            // const updatedUser = { ...(updatedUserSnapshot.data() as UserData), id: updatedUserSnapshot.id };
+    
+            // console.log('Deleted user food from Firebase:', updatedUser);
+    
+            // Update the userNow state with the updated data    
+            showToastMessage('Makanan berhasil dihapus');
+            
+            // Navigate back to the profile page
+            history.replace('/home'); 
+          } catch (error: any) {
+            console.error('Error updating username:', error.message);
+            showToastMessage('Terjadi kesalahan. Coba lagi nanti.');
+        }
+        setConfirm(false);
+    }
+
+    // untuk menampilkan pesan toast
+    const showToastMessage = (message: string) => {
+        setToastMessage(message);
+        setShowToast(true);
+      };
+
+    const openHandler = () => {
+        console.log(foodNow);
+        setConfirm(true);
+    }
+
+    // untuk close alert
+    const confirmHandler = () => {
+        setConfirm(false);
+    }
 
     return(
         <IonPage >
+            <IonAlert isOpen={confirm}
+                header="Are you sure?"
+                message="Do you want to delete this food? This cannot be undone"
+                buttons={[
+                {text:'No', role:'cancel', handler: () => {confirmHandler()}},
+                {text:'Yes', handler: () => {deleteFood()}},
+                ]}
+            />
             <IonHeader>
                 <IonToolbar color="secondary">
                     <IonButtons slot="start">
@@ -98,6 +153,7 @@ const CatatanHarian: React.FC = () => {
                                     <div className="content-card-isi" key={makanan.id}>
                                         <p>{makanan.foodName}</p><br/>
                                         <p>{makanan.totalEaten} g</p>
+                                        <IonButton onClick={() => {setFoodNow(makanan.id), openHandler()}}>Delete</IonButton>
                                     </div>
                                 )
                             }
