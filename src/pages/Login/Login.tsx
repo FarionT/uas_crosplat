@@ -40,16 +40,17 @@ const Login:React.FC = () => {
         const hashedPass = Md5.hashStr(enteredPass?.toString);
         console.log("email" + enteredEmail);
         // untuk mengecek apakah email dan password sudah terisi atau tidak
-        setCurrUser(user?.find(x => x.email == enteredEmail));
+        // setCurrUser(user?.find(x => x.email == enteredEmail));
         if(enteredEmail != "" && enteredPass != ""){
-            if(currUser != null){
-                if(currUser.email == enteredEmail && currUser.pass == hashedPass){
+            console.log(currUser?.email);
+            if(user?.find(x => x.email == enteredEmail) != undefined || user?.find(x => x.email == enteredEmail) != null){
+                if(user?.find(x => x.email == enteredEmail).email == enteredEmail && user?.find(x => x.email == enteredEmail).pass == hashedPass){
                     console.log("masuk");
-                    localStorage.setItem("loginEmail", enteredEmail!)
-                    setToastMessage('Login Berhasil')
-                    history.push('/home')
+                    localStorage.setItem("loginEmail", enteredEmail!);
+                    setToastMessage('Login Berhasil');
+                    history.push('/home');
                 }else{
-                    setToastMessage('Email atau Password salah')
+                    setToastMessage('Email atau Password salah');
                 }
             }else{
                 setToastMessage('Email atau Password salah')
