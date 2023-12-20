@@ -140,7 +140,7 @@ const SearchPage: React.FC = () => {
                       <IonSelectOption value='sc'>Snack</IonSelectOption>
                   </IonSelect>
                   <IonItem>
-                      <IonLabel position="floating">Amount eaten</IonLabel>
+                      <IonLabel position="floating">Amount eaten (g)</IonLabel>
                       <IonInput type="number" ref={totalRef}/>
                   </IonItem>
                   <Calendar onChange={onChange} value={value} className="kalender" />

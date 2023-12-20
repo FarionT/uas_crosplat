@@ -14,6 +14,7 @@ const Login:React.FC = () => {
     const db = getFirestore();
     const [user, setUser] = useState<Array<any>>();
     const [toastMessage, setToastMessage] = useState('');
+    const [currUser, setCurrUser] = useState(null);
     const history = useHistory();
 
     // BUAT AMBIL DATA USER DARI FIREBASE
@@ -37,12 +38,19 @@ const Login:React.FC = () => {
         const enteredEmail = emailRef.current?.value?.toString();
         const enteredPass = passRef.current?.value;
         const hashedPass = Md5.hashStr(enteredPass?.toString);
+        console.log("email" + enteredEmail);
         // untuk mengecek apakah email dan password sudah terisi atau tidak
+        setCurrUser(user?.find(x => x.email == enteredEmail));
         if(enteredEmail != "" && enteredPass != ""){
-            if(user?.find(x => x.email == enteredEmail) && user.find(x => x.pass == hashedPass)){
-                localStorage.setItem("loginEmail", enteredEmail!)
-                setToastMessage('Login Berhasil')
-                history.push('/home')
+            if(currUser != null){
+                if(currUser.email == enteredEmail && currUser.pass == hashedPass){
+                    console.log("masuk");
+                    localStorage.setItem("loginEmail", enteredEmail!)
+                    setToastMessage('Login Berhasil')
+                    history.push('/home')
+                }else{
+                    setToastMessage('Email atau Password salah')
+                }
             }else{
                 setToastMessage('Email atau Password salah')
             }
